@@ -419,6 +419,59 @@ const appsData = [
         downloadUrl: 'https://apkpure.com/google-authenticator/com.google.android.apps.authenticator2/downloading',
         isHot: true
     },
+    {
+        id: 'discord',
+        name: 'Discord',
+        developer: 'Discord Inc.',
+        category: 'social',
+        rating: 4.3,
+        description: 'Chat, hang out, and stay close with your friends and communities.',
+        icon: 'fab fa-discord',
+        downloadUrl: 'https://apkpure.com/discord-chat-talk-hangout/com.discord/downloading',
+        isHot: true
+    },
+    {
+        id: 'telegram',
+        name: 'Telegram',
+        developer: 'Telegram FZ-LLC',
+        category: 'social',
+        rating: 4.4,
+        description: 'Fast, secure messaging with cloud storage.',
+        icon: 'fab fa-telegram',
+        downloadUrl: 'https://apkpure.com/telegram/org.telegram.messenger/downloading',
+        isHot: true
+    },
+    {
+        id: 'nova-launcher',
+        name: 'Nova Launcher',
+        developer: 'TeslaCoil Software',
+        category: 'productivity',
+        rating: 4.5,
+        description: 'Highly customizable home screen replacement.',
+        icon: 'fas fa-rocket',
+        downloadUrl: 'https://apkpure.com/nova-launcher/com.teslacoilsw.launcher/downloading'
+    },
+    {
+        id: '1password',
+        name: '1Password',
+        developer: 'AgileBits Inc.',
+        category: 'productivity',
+        rating: 4.6,
+        description: 'Password manager for secure digital life.',
+        icon: 'fas fa-key',
+        downloadUrl: 'https://apkpure.com/1password/com.onepassword.android/downloading'
+    },
+    {
+        id: 'pubg-mobile',
+        name: 'PUBG Mobile',
+        developer: 'PUBG Corporation',
+        category: 'games',
+        rating: 4.2,
+        description: 'Battle royale game with realistic graphics.',
+        icon: 'fas fa-crosshairs',
+        downloadUrl: 'https://apkpure.com/pubg-mobile/com.tencent.ig/downloading',
+        isHot: true
+    },
 
 
     {
@@ -536,6 +589,297 @@ const appsData = [
         description: 'Free education platform for learning various subjects.',
         icon: 'fas fa-book-open',
         downloadUrl: 'https://apkpure.com/khan-academy/org.khanacademy.android/downloading'
+    },
+    {
+        id: 'chrome-browser',
+        name: 'Chrome Browser',
+        developer: 'Google LLC',
+        category: 'productivity',
+        rating: 4.1,
+        description: 'Fast, secure web browser with Google services integration.',
+        icon: 'fab fa-chrome',
+        downloadUrl: 'https://apkpure.com/chrome-browser/com.android.chrome/downloading',
+        badges: ["data-sharing"]
+    },
+    {
+        id: 'firefox',
+        name: 'Firefox Browser',
+        developer: 'Mozilla',
+        category: 'productivity',
+        rating: 4.3,
+        description: 'Fast, private & safe web browser that blocks trackers.',
+        icon: 'fab fa-firefox',
+        downloadUrl: 'https://apkpure.com/firefox-browser/org.mozilla.firefox/downloading'
+    },
+    {
+        id: 'youtube-music',
+        name: 'YouTube Music',
+        developer: 'Google LLC',
+        category: 'music',
+        rating: 4.2,
+        description: 'Stream music and discover new favorites.',
+        icon: 'fab fa-youtube',
+        downloadUrl: 'https://apkpure.com/youtube-music/com.google.android.apps.youtube.music/downloading',
+        badges: ["data-sharing"],
+        isHot: true
+    },
+    {
+        id: 'amazon-prime-video',
+        name: 'Amazon Prime Video',
+        developer: 'Amazon Mobile LLC',
+        category: 'entertainment',
+        rating: 4.0,
+        description: 'Watch movies, TV shows and original content.',
+        icon: 'fab fa-amazon',
+        downloadUrl: 'https://apkpure.com/amazon-prime-video/com.amazon.avod.thirdpartyclient/downloading',
+        badges: ["data-sharing"]
+    },
+    {
+        id: 'disney-plus',
+        name: 'Disney+',
+        developer: 'Disney',
+        category: 'entertainment',
+        rating: 4.1,
+        description: 'Stream Disney, Pixar, Marvel, Star Wars & National Geographic.',
+        icon: 'fas fa-play-circle',
+        downloadUrl: 'https://apkpure.com/disney/com.disney.disneyplus/downloading',
+        badges: ["data-sharing"]
+    },
+    {
+        id: 'hbo-max',
+        name: 'HBO Max',
+        developer: 'WarnerMedia Direct, LLC',
+        category: 'entertainment',
+        rating: 4.0,
+        description: 'Stream HBO, Warner Bros movies and Max Originals.',
+        icon: 'fas fa-film',
+        downloadUrl: 'https://apkpure.com/hbo-max/com.hbo.hbonow/downloading',
+        badges: ["data-sharing"]
+    },
+    {
+        id: 'call-of-duty-mobile',
+        name: 'Call of Duty Mobile',
+        developer: 'Activision Publishing',
+        category: 'games',
+        rating: 4.2,
+        description: 'Free-to-play first-person shooter mobile game.',
+        icon: 'fas fa-crosshairs',
+        downloadUrl: 'https://apkpure.com/call-of-duty-mobile/com.activision.callofduty.shooter/downloading',
+        isHot: true
+    },
+    {
+        id: 'free-fire',
+        name: 'Free Fire',
+        developer: 'Garena International I',
+        category: 'games',
+        rating: 4.1,
+        description: 'Ultimate survival shooter game for mobile.',
+        icon: 'fas fa-fire',
+        downloadUrl: 'https://apkpure.com/free-fire/com.dts.freefireth/downloading',
+        isHot: true
+    },
+    {
+        id: 'mobile-legends',
+        name: 'Mobile Legends',
+        developer: 'Moonton',
+        category: 'games',
+        rating: 4.3,
+        description: 'Classic MOBA game reimagined for mobile.',
+        icon: 'fas fa-sword',
+        downloadUrl: 'https://apkpure.com/mobile-legends-bang-bang/com.mobile.legends/downloading',
+        isHot: true
+    },
+    {
+        id: 'genshin-impact',
+        name: 'Genshin Impact',
+        developer: 'miHoYo Limited',
+        category: 'games',
+        rating: 4.4,
+        description: 'Open-world action RPG with stunning visuals.',
+        icon: 'fas fa-magic',
+        downloadUrl: 'https://apkpure.com/genshin-impact/com.miHoYo.GenshinImpact/downloading',
+        isHot: true
+    },
+    {
+        id: 'brawl-stars',
+        name: 'Brawl Stars',
+        developer: 'Supercell',
+        category: 'games',
+        rating: 4.3,
+        description: 'Fast-paced 3v3 multiplayer and battle royale.',
+        icon: 'fas fa-star',
+        downloadUrl: 'https://apkpure.com/brawl-stars/com.supercell.brawlstars/downloading',
+        isHot: true
+    },
+    {
+        id: 'garena-free-fire-max',
+        name: 'Free Fire MAX',
+        developer: 'Garena International I',
+        category: 'games',
+        rating: 4.2,
+        description: 'Enhanced version of Free Fire with better graphics.',
+        icon: 'fas fa-fire-flame-curved',
+        downloadUrl: 'https://apkpure.com/free-fire-max/com.dts.freefiremax/downloading',
+        isHot: true
+    },
+    {
+        id: 'valorant-mobile',
+        name: 'VALORANT Mobile',
+        developer: 'Riot Games',
+        category: 'games',
+        rating: 4.1,
+        description: 'Tactical 5v5 character-based shooter.',
+        icon: 'fas fa-bullseye',
+        downloadUrl: 'https://apkpure.com/valorant-mobile/com.riotgames.valorantmobile/downloading',
+        badges: ["unstable"]
+    },
+    {
+        id: 'facebook-messenger',
+        name: 'Messenger',
+        developer: 'Meta Platforms, Inc.',
+        category: 'social',
+        rating: 4.0,
+        description: 'Free messaging app to connect with friends.',
+        icon: 'fab fa-facebook-messenger',
+        downloadUrl: 'https://apkpure.com/messenger/com.facebook.orca/downloading',
+        badges: ["data-sharing"]
+    },
+    {
+        id: 'google-meet',
+        name: 'Google Meet',
+        developer: 'Google LLC',
+        category: 'productivity',
+        rating: 4.1,
+        description: 'Video calling and conferencing for everyone.',
+        icon: 'fas fa-video',
+        downloadUrl: 'https://apkpure.com/google-meet/com.google.android.apps.meetings/downloading',
+        badges: ["data-sharing"]
+    },
+    {
+        id: 'adobe-lightroom',
+        name: 'Adobe Lightroom',
+        developer: 'Adobe Inc.',
+        category: 'photography',
+        rating: 4.3,
+        description: 'Professional photo editing and organizing.',
+        icon: 'fas fa-image',
+        downloadUrl: 'https://apkpure.com/adobe-lightroom/com.adobe.lrmobile/downloading'
+    },
+    {
+        id: 'picsart',
+        name: 'PicsArt',
+        developer: 'PicsArt, Inc.',
+        category: 'photography',
+        rating: 4.2,
+        description: 'Photo and video editor with creative tools.',
+        icon: 'fas fa-palette',
+        downloadUrl: 'https://apkpure.com/picsart-photo-video-editor/com.picsart.studio/downloading',
+        badges: ["data-sharing"]
+    },
+    {
+        id: 'snapseed',
+        name: 'Snapseed',
+        developer: 'Google LLC',
+        category: 'photography',
+        rating: 4.4,
+        description: 'Professional photo editor with precise control.',
+        icon: 'fas fa-camera',
+        downloadUrl: 'https://apkpure.com/snapseed/com.niksoftware.snapseed/downloading'
+    },
+    {
+        id: 'google-pay',
+        name: 'Google Pay',
+        developer: 'Google LLC',
+        category: 'productivity',
+        rating: 4.0,
+        description: 'Digital wallet and payment platform.',
+        icon: 'fab fa-google-pay',
+        downloadUrl: 'https://apkpure.com/google-pay/com.google.android.apps.nfc.payment/downloading',
+        badges: ["data-sharing"]
+    },
+    {
+        id: 'paypal',
+        name: 'PayPal',
+        developer: 'PayPal Mobile',
+        category: 'productivity',
+        rating: 4.1,
+        description: 'Send, receive, and manage your money securely.',
+        icon: 'fab fa-paypal',
+        downloadUrl: 'https://apkpure.com/paypal/com.paypal.android.p2pmobile/downloading',
+        badges: ["data-sharing"]
+    },
+    {
+        id: 'shazam',
+        name: 'Shazam',
+        developer: 'Apple Inc.',
+        category: 'music',
+        rating: 4.3,
+        description: 'Identify any song playing around you.',
+        icon: 'fas fa-music',
+        downloadUrl: 'https://apkpure.com/shazam/com.shazam.android/downloading'
+    },
+    {
+        id: 'google-calendar',
+        name: 'Google Calendar',
+        developer: 'Google LLC',
+        category: 'productivity',
+        rating: 4.2,
+        description: 'Organize your schedule and share events.',
+        icon: 'fas fa-calendar',
+        downloadUrl: 'https://apkpure.com/google-calendar/com.google.android.calendar/downloading',
+        badges: ["data-sharing"]
+    },
+    {
+        id: 'google-assistant',
+        name: 'Google Assistant',
+        developer: 'Google LLC',
+        category: 'productivity',
+        rating: 4.1,
+        description: 'Your personal Google Assistant.',
+        icon: 'fas fa-microphone',
+        downloadUrl: 'https://apkpure.com/google-assistant/com.google.android.apps.googleassistant/downloading',
+        badges: ["data-sharing"]
+    },
+    {
+        id: 'mi-remote',
+        name: 'Mi Remote controller',
+        developer: 'Xiaomi Inc.',
+        category: 'productivity',
+        rating: 4.2,
+        description: 'Universal remote control for home appliances.',
+        icon: 'fas fa-tv',
+        downloadUrl: 'https://apkpure.com/mi-remote-controller/com.duokan.phone.remotecontroller/downloading'
+    },
+    {
+        id: 'es-file-explorer',
+        name: 'ES File Explorer',
+        developer: 'ES Global',
+        category: 'productivity',
+        rating: 4.0,
+        description: 'All-in-one file manager and free local and cloud storage.',
+        icon: 'fas fa-folder',
+        downloadUrl: 'https://apkpure.com/es-file-explorer/com.estrongs.android.pop/downloading',
+        badges: ["data-sharing"]
+    },
+    {
+        id: 'mx-player',
+        name: 'MX Player',
+        developer: 'MX Media',
+        category: 'entertainment',
+        rating: 4.2,
+        description: 'Powerful video player with advanced features.',
+        icon: 'fas fa-play',
+        downloadUrl: 'https://apkpure.com/mx-player/com.mxtech.videoplayer.ad/downloading'
+    },
+    {
+        id: 'vlc-player',
+        name: 'VLC for Android',
+        developer: 'VideoLAN',
+        category: 'entertainment',
+        rating: 4.3,
+        description: 'Free multimedia player for all formats.',
+        icon: 'fas fa-play-circle',
+        downloadUrl: 'https://apkpure.com/vlc-for-android/org.videolan.vlc/downloading'
     }
 ];
 
