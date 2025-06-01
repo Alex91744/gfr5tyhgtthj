@@ -785,39 +785,7 @@ const appsData = [
         description: 'Professional photo editor with precise control.',
         icon: 'fas fa-camera',
         downloadUrl: 'https://apkpure.com/snapseed/com.niksoftware.snapseed/downloading'
-    },
-    {
-        id: 'google-pay',
-        name: 'Google Pay',
-        developer: 'Google LLC',
-        category: 'productivity',
-        rating: 4.0,
-        description: 'Digital wallet and payment platform.',
-        icon: 'fab fa-google-pay',
-        downloadUrl: 'https://apkpure.com/google-pay/com.google.android.apps.nfc.payment/downloading',
-        badges: ["data-sharing"]
-    },
-    {
-        id: 'paypal',
-        name: 'PayPal',
-        developer: 'PayPal Mobile',
-        category: 'productivity',
-        rating: 4.1,
-        description: 'Send, receive, and manage your money securely.',
-        icon: 'fab fa-paypal',
-        downloadUrl: 'https://apkpure.com/paypal/com.paypal.android.p2pmobile/downloading',
-        badges: ["data-sharing"]
-    },
-    {
-        id: 'shazam',
-        name: 'Shazam',
-        developer: 'Apple Inc.',
-        category: 'music',
-        rating: 4.3,
-        description: 'Identify any song playing around you.',
-        icon: 'fas fa-music',
-        downloadUrl: 'https://apkpure.com/shazam/com.shazam.android/downloading'
-    },
+    }
     {
         id: 'google-calendar',
         name: 'Google Calendar',
