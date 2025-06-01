@@ -17,21 +17,18 @@
                     <i class="fas fa-mobile-alt"></i>
                     <span>Acue Store</span>
                 </div>
+
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search apps...">
+                </div>
+
                 <nav class="nav">
                     <a href="#home" class="nav-link active">Home</a>
                     <a href="#games" class="nav-link">Games</a>
                     <a href="#apps" class="nav-link">Apps</a>
                     <a href="#categories" class="nav-link">Categories</a>
                 </nav>
-                <div class="theme-toggle">
-                    <button id="themeToggle" class="theme-btn">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                </div>
-                <div class="search-container">
-                    <input type="text" id="searchInput" class="search-input" placeholder="Search apps...">
-                    <i class="fas fa-search search-icon"></i>
-                </div>
             </div>
         </div>
     </header>
@@ -42,9 +39,11 @@
             <!-- Hero Section -->
             <section class="hero">
                 <div class="hero-content">
-                    <h1>  Acue Store</h1>
+                    <h1>Acue Store</h1>
                     <p>Welcome to Acue Store.</p> 
-         <p1>Disclaimer: Some apps may be unstable</p1>                       <div>                       <p2>Version: Beta 1 release 2</p2>      <div>
+                    <p>Disclaimer: Some apps may be unstable</p>
+                    <p>Version: Beta 1 release 2</p>
+                </div>
             </section>
 
             <!-- Categories -->
@@ -81,8 +80,10 @@
             <!-- Hot Apps -->
             <section class="hot-apps-section">
                 <h2 class="section-title">🔥 Hot | Recommended apps </h2>
-                <div class="apps-grid" id="hotAppsGrid">
-                    <!-- Hot apps will be dynamically loaded here -->
+                <div class="hot-apps-container">
+                    <div class="hot-apps-scroll" id="hotAppsGrid">
+                        <!-- Hot apps will be dynamically loaded here -->
+                    </div>
                 </div>
             </section>
 
