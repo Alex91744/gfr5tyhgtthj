@@ -1,71 +1,114 @@
-#page
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acue Store - Under Maintenance</title>
+    <title>Acue Store - Get Ready for a New Look!</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-bg: linear-gradient(135deg, #8A2BE2 0%, #4B0082 100%);
+            --accent-color: #00FFFF;
+            --text-color: white;
+            --container-bg: rgba(255, 255, 255, 0.08);
+            --border-light: rgba(255, 255, 255, 0.15);
+            --box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            --button-gradient: linear-gradient(135deg, #00FFFF, #1a9c9c);
+            --button-hover-gradient: linear-gradient(135deg, #1a9c9c, #00FFFF);
+        }
+
+        /* Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            font-family: 'Poppins', sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-color);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        
+
+        /* Background Particle/Effect overlay */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at top left, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at bottom right, rgba(138, 43, 226, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            animation: bgPulse 10s infinite alternate;
+        }
+
+        @keyframes bgPulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.05); opacity: 0.9; }
+        }
+
+        /* Main Container */
         .maintenance-container {
-            max-width: 600px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 60px 40px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 700px;
+            background: var(--container-bg);
+            backdrop-filter: blur(25px);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: var(--box-shadow);
+            animation: fadeIn 0.5s ease forwards;
         }
-        
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .error-icon {
             font-size: 80px;
             margin-bottom: 30px;
             color: #ff6b6b;
             animation: pulse 2s infinite;
         }
-        
+
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.1); }
         }
-        
+
         h1 {
             font-size: 36px;
             margin-bottom: 20px;
             font-weight: 700;
         }
-        
+
         .error-code {
             font-size: 18px;
             color: #ffd93d;
             margin-bottom: 30px;
             font-weight: 600;
         }
-        
+
         .message {
             font-size: 18px;
             line-height: 1.6;
             margin-bottom: 40px;
             opacity: 0.9;
         }
-        
+
         .update-info {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
@@ -73,7 +116,7 @@
             margin-bottom: 30px;
             border-left: 4px solid #ffd93d;
         }
-        
+
         .loading-spinner {
             width: 40px;
             height: 40px;
@@ -83,14 +126,14 @@
             animation: spin 1s linear infinite;
             margin: 0 auto 20px;
         }
-        
+
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        
+
         .back-btn {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: var(--button-gradient);
             color: white;
             border: none;
             padding: 15px 30px;
@@ -103,69 +146,104 @@
             display: inline-block;
             margin-top: 20px;
         }
-        
+
         .back-btn:hover {
+            background: var(--button-hover-gradient);
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
-        
+
+        .version-info {
+            font-size: 14px;
+            margin-top: 20px;
+            opacity: 0.8;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 24px;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ffd93d;
+        }
+
         @media (max-width: 480px) {
             .maintenance-container {
-                padding: 40px 20px;
+                padding: 20px;
             }
-            
+
             h1 {
                 font-size: 28px;
             }
-            
+
             .error-icon {
                 font-size: 60px;
             }
-            
+
             .message {
                 font-size: 16px;
             }
         }
     </style>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="maintenance-container">
         <div class="error-icon">
             <i class="fas fa-tools"></i>
         </div>
-        
-        <h1>Service Temporarily Unavailable</h1>
-        
+
+        <h1>Get Ready for a New Look!</h1>
+
         <div class="error-code">Error Code: 503 - Maintenance Mode</div>
-        
+
         <div class="message">
             <strong>Acue Store is currently down for updates</strong><br>
             We're working hard to improve your experience and will be back online soon.
         </div>
-        
+
         <div class="update-info">
             <div class="loading-spinner"></div>
             <p><strong>What's happening?</strong></p>
             <p>Our team is performing essential updates to enhance security, performance, and add new features to the Acue Store platform.</p>
         </div>
-        
+
         <p style="font-size: 16px; opacity: 0.8;">
-            <i class="fas fa-clock"></i> Estimated downtime: 2-4 hours<br>
+            <i class="fas fa-clock"></i> Estimated downtime: 1 hour<br>
             <i class="fas fa-calendar"></i> Updates will be available later today
         </p>
-        
+
         <a href="#" onclick="location.reload()" class="back-btn">
             <i class="fas fa-sync-alt"></i> Refresh Page
         </a>
+
+        <div class="version-info">
+            <p>APK Security Patch: June 1, 2025</p>
+            <p>Store UI Version: 1.0</p>
+        </div>
+
+        <div class="social-links">
+            <a href="https://twitter.com/Acuegb" target="_blank" aria-label="Follow Acuegb on Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.tiktok.com/@Acuegb" target="_blank" aria-label="Follow Acuegb on TikTok">
+                <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
     </div>
-    
+
     <script>
         // Auto-refresh every 5 minutes
         setTimeout(function() {
             location.reload();
         }, 300000);
-        
+
         // Add some dynamic content
         setInterval(function() {
             const spinner = document.querySelector('.loading-spinner');
