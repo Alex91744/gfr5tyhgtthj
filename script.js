@@ -6,7 +6,8 @@ class AcueStore {
         this.categories = window.categories || {};
         this.currentFilter = '';
         this.currentSearchTerm = '';
-        
+        this.deviceInfo = this.detectDevice();
+
         this.init();
     }
 
@@ -15,7 +16,6 @@ class AcueStore {
         this.renderHotApps();
         this.renderApps();
         this.updateActiveNavLink();
-        this.initThemeToggle();
         this.initBadgeModal();
     }
 
@@ -102,7 +102,7 @@ class AcueStore {
 
     filterAndRenderApps() {
         this.showLoading();
-        
+
         // Simulate loading delay for better UX
         setTimeout(() => {
             let filteredApps = [...this.apps];
@@ -210,17 +210,17 @@ class AcueStore {
         const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
 
         let stars = '';
-        
+
         // Full stars
         for (let i = 0; i < fullStars; i++) {
             stars += '<i class="fas fa-star"></i>';
         }
-        
+
         // Half star
         if (hasHalfStar) {
             stars += '<i class="fas fa-star-half-alt"></i>';
         }
-        
+
         // Empty stars
         for (let i = 0; i < emptyStars; i++) {
             stars += '<i class="far fa-star"></i>';
@@ -231,16 +231,16 @@ class AcueStore {
 
     createAppBadges(badges) {
         if (!badges || badges.length === 0) return '';
-        
+
         const badgeTypes = window.badgeTypes || {};
-        
+
         const badgeHtml = badges.map(badgeType => {
             const badge = badgeTypes[badgeType];
             if (!badge) return '';
-            
+
             return `<span class="app-badge badge-${badgeType}" data-badge-type="${badgeType}">${badge.icon}</span>`;
         }).join('');
-        
+
         return badgeHtml ? `<div class="app-badges">${badgeHtml}</div>` : '';
     }
 
@@ -250,17 +250,17 @@ class AcueStore {
             this.showBrowserError();
             return;
         }
-        
+
         // Add download tracking or analytics here if needed
         console.log(`Downloading ${app.name} from ${app.downloadUrl}`);
-        
+
         // Show a brief loading state on the button
         const button = document.querySelector(`[data-app-id="${app.id}"] .download-btn`);
         if (button) {
             const originalText = button.innerHTML;
             button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Opening...';
             button.style.pointerEvents = 'none';
-            
+
             setTimeout(() => {
                 button.innerHTML = originalText;
                 button.style.pointerEvents = 'auto';
@@ -276,11 +276,11 @@ class AcueStore {
         if (typeof window === 'undefined' || typeof window.open !== 'function') {
             return false;
         }
-        
+
         // Check user agent for known browsers
         const userAgent = navigator.userAgent.toLowerCase();
         const browsers = ['chrome', 'firefox', 'safari', 'edge', 'opera', 'samsung', 'ucbrowser'];
-        
+
         return browsers.some(browser => userAgent.includes(browser)) || 
                userAgent.includes('mozilla') || 
                userAgent.includes('webkit');
@@ -289,12 +289,12 @@ class AcueStore {
     showBrowserError() {
         const errorModal = this.createBrowserErrorModal();
         document.body.appendChild(errorModal);
-        
+
         // Show modal
         setTimeout(() => {
             errorModal.classList.add('show');
         }, 10);
-        
+
         // Auto-hide after 5 seconds
         setTimeout(() => {
             this.hideBrowserErrorModal(errorModal);
@@ -319,7 +319,7 @@ class AcueStore {
                 </button>
             </div>
         `;
-        
+
         return modal;
     }
 
@@ -335,7 +335,7 @@ class AcueStore {
     updateActiveNavLink(activeLink = null) {
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => link.classList.remove('active'));
-        
+
         if (activeLink) {
             activeLink.classList.add('active');
         } else {
@@ -360,7 +360,7 @@ class AcueStore {
         const loading = document.getElementById('loading');
         const appsGrid = document.getElementById('appsGrid');
         const noResults = document.getElementById('noResults');
-        
+
         if (loading) loading.style.display = 'block';
         if (appsGrid) appsGrid.style.display = 'none';
         if (noResults) noResults.style.display = 'none';
@@ -369,7 +369,7 @@ class AcueStore {
     hideLoading() {
         const loading = document.getElementById('loading');
         const appsGrid = document.getElementById('appsGrid');
-        
+
         if (loading) loading.style.display = 'none';
         if (appsGrid) appsGrid.style.display = 'grid';
     }
@@ -425,11 +425,11 @@ class AcueStore {
     renderHotApps() {
         const hotApps = this.apps.filter(app => app.isHot);
         const hotAppsGrid = document.getElementById('hotAppsGrid');
-        
+
         if (!hotAppsGrid) return;
-        
+
         hotAppsGrid.innerHTML = hotApps.map(app => this.createAppCard(app, true)).join('');
-        
+
         // Add click event listeners to download buttons
         const downloadButtons = hotAppsGrid.querySelectorAll('.download-btn');
         downloadButtons.forEach((button, index) => {
@@ -452,44 +452,19 @@ class AcueStore {
         });
     }
 
-    initThemeToggle() {
-        const themeToggle = document.getElementById('themeToggle');
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        
-        // Set initial theme
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        this.updateThemeIcon(savedTheme);
-        
-        if (themeToggle) {
-            themeToggle.addEventListener('click', () => {
-                const currentTheme = document.documentElement.getAttribute('data-theme');
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                
-                document.documentElement.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-                this.updateThemeIcon(newTheme);
-            });
-        }
-    }
 
-    updateThemeIcon(theme) {
-        const themeIcon = document.querySelector('#themeToggle i');
-        if (themeIcon) {
-            themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-        }
-    }
 
     showBadgeModal(badgeType) {
         const badgeTypes = window.badgeTypes || {};
         const badge = badgeTypes[badgeType];
-        
+
         if (!badge) return;
-        
+
         const modal = document.getElementById('badgeModal');
         const icon = document.getElementById('badgeModalIcon');
         const title = document.getElementById('badgeModalTitle');
         const body = document.getElementById('badgeModalBody');
-        
+
         if (modal && icon && title && body) {
             icon.textContent = badge.icon;
             title.textContent = badge.name;
@@ -508,13 +483,13 @@ class AcueStore {
     initBadgeModal() {
         const modal = document.getElementById('badgeModal');
         const closeBtn = document.getElementById('badgeModalClose');
-        
+
         if (closeBtn) {
             closeBtn.addEventListener('click', () => {
                 this.hideBadgeModal();
             });
         }
-        
+
         if (modal) {
             modal.addEventListener('click', (e) => {
                 if (e.target === modal) {
@@ -522,13 +497,92 @@ class AcueStore {
                 }
             });
         }
-        
+
         // Close modal with escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 this.hideBadgeModal();
             }
         });
+    }
+
+    detectDevice() {
+        const userAgent = navigator.userAgent;
+        const platform = navigator.platform;
+        const maxTouchPoints = navigator.maxTouchPoints;
+        const screenWidth = window.screen.width;
+        const screenHeight = window.screen.height;
+
+        let deviceType = 'Desktop';
+        let os = 'Unknown';
+        let browser = 'Unknown';
+
+        // Detect OS
+        if (/Android/i.test(userAgent)) {
+            os = 'Android';
+            deviceType = 'Mobile';
+        } else if (/iPhone|iPad|iPod/i.test(userAgent)) {
+            os = 'iOS';
+            deviceType = /iPad/i.test(userAgent) ? 'Tablet' : 'Mobile';
+        } else if (/Windows NT/i.test(userAgent)) {
+            os = 'Windows';
+        } else if (/Mac OS X/i.test(userAgent)) {
+            os = 'macOS';
+        } else if (/Linux/i.test(userAgent)) {
+            os = 'Linux';
+        }
+
+        // Detect Browser
+        if (/Chrome/i.test(userAgent) && !/Edg/i.test(userAgent)) {
+            browser = 'Chrome';
+        } else if (/Firefox/i.test(userAgent)) {
+            browser = 'Firefox';
+        } else if (/Safari/i.test(userAgent) && !/Chrome/i.test(userAgent)) {
+            browser = 'Safari';
+        } else if (/Edg/i.test(userAgent)) {
+            browser = 'Edge';
+        }
+
+        // Refine device type based on screen size and touch
+        if (deviceType === 'Desktop') {
+            if (maxTouchPoints > 0 && screenWidth <= 1024) {
+                deviceType = 'Tablet';
+            } else if (screenWidth <= 768) {
+                deviceType = 'Mobile';
+            }
+        }
+
+        return {
+            type: deviceType,
+            os: os,
+            browser: browser,
+            screenWidth: screenWidth,
+            screenHeight: screenHeight,
+            touchEnabled: maxTouchPoints > 0
+        };
+    }
+
+    displayDeviceInfo() {
+        const deviceIndicator = document.getElementById('deviceIndicator');
+        if (deviceIndicator) {
+            const device = this.deviceInfo;
+            const deviceIcon = this.getDeviceIcon(device.type);
+            deviceIndicator.innerHTML = `${deviceIcon} ${device.type} | ${device.os}`;
+            deviceIndicator.title = `Device: ${device.type}\nOS: ${device.os}\nBrowser: ${device.browser}\nScreen: ${device.screenWidth}x${device.screenHeight}\nTouch: ${device.touchEnabled ? 'Yes' : 'No'}`;
+        }
+    }
+
+    getDeviceIcon(deviceType) {
+        switch (deviceType) {
+            case 'Mobile':
+                return '📱';
+            case 'Tablet':
+                return '📱';
+            case 'Desktop':
+                return '💻';
+            default:
+                return '🖥️';
+        }
     }
 }
 
