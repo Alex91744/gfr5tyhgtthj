@@ -81,24 +81,14 @@ const appsData = [
         downloadUrl: 'https://apkpure.com/telegram/org.telegram.messenger/downloading'
     },
     {
-        id: 'netflix',
-        name: 'Netflix',
-        developer: 'Netflix, Inc.',
+        id: 'vlc',
+        name: 'VLC Media Player',
+        developer: 'VideoLAN',
         category: 'entertainment',
-        rating: 4.2,
-        description: 'Watch TV series, movies and more on your mobile device.',
-        icon: 'fas fa-film',
-        downloadUrl: 'https://apkpure.com/netflix/com.netflix.mediaclient/downloading'
-    },
-    {
-        id: 'uber',
-        name: 'Uber',
-        developer: 'Uber Technologies, Inc.',
-        category: 'productivity',
-        rating: 4.1,
-        description: 'Request a ride, hop in, and go anywhere you want.',
-        icon: 'fab fa-uber',
-        downloadUrl: 'https://apkpure.com/uber/com.ubercab/downloading'
+        rating: 4.5,
+        description: 'Free and open source cross-platform multimedia player.',
+        icon: 'fas fa-play',
+        downloadUrl: 'https://apkpure.com/vlc-for-android/org.videolan.vlc/downloading'
     },
     {
         id: 'pubg',
@@ -150,16 +140,7 @@ const appsData = [
         icon: 'fab fa-amazon',
         downloadUrl: 'https://apkpure.com/amazon-shopping/com.amazon.mshop.android.shopping/downloading'
     },
-    {
-        id: 'vsco',
-        name: 'VSCO',
-        developer: 'VSCO',
-        category: 'photography',
-        rating: 4.2,
-        description: 'Photo and video editing with filters and tools.',
-        icon: 'fas fa-camera-retro',
-        downloadUrl: 'https://apkpure.com/vsco-photo-video-editor/com.vsco.cam/downloading'
-    },
+
     {
         id: 'snapchat',
         name: 'Snapchat',
@@ -190,25 +171,16 @@ const appsData = [
         icon: 'fab fa-linkedin',
         downloadUrl: 'https://apkpure.com/linkedin/com.linkedin.android/downloading'
     },
+
     {
-        id: 'adobe-photoshop',
-        name: 'Adobe Photoshop Express',
-        developer: 'Adobe Inc.',
-        category: 'photography',
-        rating: 4.3,
-        description: 'Photo editing and collage making app.',
-        icon: 'fas fa-palette',
-        downloadUrl: 'https://apkpure.com/adobe-photoshop-express/com.adobe.psmobile/downloading'
-    },
-    {
-        id: 'canva',
-        name: 'Canva',
-        developer: 'Canva',
+        id: 'termux',
+        name: 'Termux',
+        developer: 'Fredrik Fornwall',
         category: 'productivity',
-        rating: 4.5,
-        description: 'Design anything. Publish anywhere.',
-        icon: 'fas fa-paint-brush',
-        downloadUrl: 'https://apkpure.com/canva-design-photo-video/com.canva.editor/downloading'
+        rating: 4.4,
+        description: 'Terminal emulator and Linux environment for Android.',
+        icon: 'fas fa-terminal',
+        downloadUrl: 'https://apkpure.com/termux/com.termux/downloading'
     },
     {
         id: 'roblox',
@@ -234,14 +206,14 @@ const appsData = [
         badges: ["data-sharing"]
     },
     {
-        id: 'outlook',
-        name: 'Microsoft Outlook',
-        developer: 'Microsoft Corporation',
+        id: 'brave-browser',
+        name: 'Brave Browser',
+        developer: 'Brave Software',
         category: 'productivity',
-        rating: 4.1,
-        description: 'Easily organize your inbox and schedule. Connect across devices.',
-        icon: 'fab fa-microsoft',
-        downloadUrl: 'https://apkpure.com/microsoft-outlook/com.microsoft.office.outlook/downloading'
+        rating: 4.5,
+        description: 'Fast, private browser that blocks ads and trackers.',
+        icon: 'fas fa-shield-alt',
+        downloadUrl: 'https://apkpure.com/brave-browser/com.brave.browser/downloading'
     },
     {
         id: 'tiktok-lite',
@@ -252,7 +224,7 @@ const appsData = [
         description: 'Lighter version of TikTok for creating and sharing short videos.',
         icon: 'fab fa-tiktok',
         downloadUrl: 'https://apkpure.com/tiktok-lite/com.zhiliaoapp.musically.go/downloading',
-        isHot: true
+        isHot: false
     },
     {
         id: 'google-chrome',
@@ -338,14 +310,14 @@ const appsData = [
         downloadUrl: 'https://apkpure.com/candy-crush-saga/com.king.candycrushsaga/downloading'
     },
     {
-        id: 'microsoft-word',
-        name: 'Microsoft Word',
-        developer: 'Microsoft Corporation',
-        category: 'productivity',
-        rating: 4.1,
-        description: 'Create, edit, and share documents on the go.',
-        icon: 'fas fa-file-word',
-        downloadUrl: 'https://apkpure.com/microsoft-word/com.microsoft.office.word/downloading'
+        id: 'simple-gallery',
+        name: 'Simple Gallery',
+        developer: 'Simple Mobile Tools',
+        category: 'photography',
+        rating: 4.6,
+        description: 'A simple tool used for viewing photos and videos.',
+        icon: 'fas fa-images',
+        downloadUrl: 'https://apkpure.com/simple-gallery/com.simplemobiletools.gallery/downloading'
     },
     {
         id: 'google-photos',
@@ -451,16 +423,7 @@ const appsData = [
         icon: 'fas fa-rocket',
         downloadUrl: 'https://apkpure.com/nova-launcher/com.teslacoilsw.launcher/downloading'
     },
-    {
-        id: '1password',
-        name: '1Password',
-        developer: 'AgileBits Inc.',
-        category: 'productivity',
-        rating: 4.6,
-        description: 'Password manager for secure digital life.',
-        icon: 'fas fa-key',
-        downloadUrl: 'https://apkpure.com/1password/com.onepassword.android/downloading'
-    },
+
     {
         id: 'pubg-mobile',
         name: 'PUBG Mobile',
@@ -518,25 +481,26 @@ const appsData = [
         downloadUrl: 'https://apkpure.com/twitch/tv.twitch.android.app/downloading'
     },
     {
-        id: 'microsoft-teams',
-        name: 'Microsoft Teams',
-        developer: 'Microsoft Corporation',
-        category: 'productivity',
-        rating: 4.0,
-        description: 'Collaborate and communicate with your team.',
-        icon: 'fas fa-users',
-        downloadUrl: 'https://apkpure.com/microsoft-teams/com.microsoft.teams/downloading'
+        id: 'signal',
+        name: 'Signal Private Messenger',
+        developer: 'Signal Foundation',
+        category: 'social',
+        rating: 4.6,
+        description: 'Private messenger with end-to-end encryption.',
+        icon: 'fas fa-shield-alt',
+        downloadUrl: 'https://apkpure.com/signal-private-messenger/org.thoughtcrime.securesms/downloading',
+        isHot: true
     },
 
     {
-        id: 'kaspersky',
-        name: 'Kaspersky Mobile Antivirus',
-        developer: 'Kaspersky Lab',
-        category: 'productivity',
-        rating: 4.3,
-        description: 'Protect your device from viruses and malware.',
-        icon: 'fas fa-shield-virus',
-        downloadUrl: 'https://apkpure.com/kaspersky-mobile-antivirus/com.kms.free/downloading'
+        id: 'newpipe',
+        name: 'NewPipe',
+        developer: 'TeamNewPipe',
+        category: 'entertainment',
+        rating: 4.7,
+        description: 'Lightweight YouTube frontend for Android.',
+        icon: 'fas fa-video',
+        downloadUrl: 'https://apkpure.com/newpipe/org.schabi.newpipe/downloading'
     },
     {
         id: 'wps-office',
@@ -549,26 +513,17 @@ const appsData = [
         downloadUrl: 'https://apkpure.com/wps-office/cn.wps.moffice_eng/downloading'
     },
     {
-        id: 'truecaller',
-        name: 'Truecaller',
-        developer: 'True Software Scandinavia AB',
+        id: 'f-droid',
+        name: 'F-Droid',
+        developer: 'F-Droid Limited',
         category: 'productivity',
-        rating: 4.1,
-        description: 'Identify unknown callers and block spam calls.',
-        icon: 'fas fa-phone',
-        downloadUrl: 'https://apkpure.com/truecaller/com.truecaller/downloading'
+        rating: 4.3,
+        description: 'An installable catalogue of FOSS (Free and Open Source Software) Android apps.',
+        icon: 'fas fa-cube',
+        downloadUrl: 'https://apkpure.com/f-droid/org.fdroid.fdroid/downloading'
     },
 
-    {
-        id: 'apple-music',
-        name: 'Apple Music',
-        developer: 'Apple Inc.',
-        category: 'music',
-        rating: 4.1,
-        description: 'Stream over 100 million songs ad-free.',
-        icon: 'fab fa-apple',
-        downloadUrl: 'https://apkpure.com/apple-music/com.apple.android.music/downloading'
-    },
+
     {
         id: 'soundcloud',
         name: 'SoundCloud',
@@ -623,39 +578,9 @@ const appsData = [
         badges: ["data-sharing"],
         isHot: true
     },
-    {
-        id: 'amazon-prime-video',
-        name: 'Amazon Prime Video',
-        developer: 'Amazon Mobile LLC',
-        category: 'entertainment',
-        rating: 4.0,
-        description: 'Watch movies, TV shows and original content.',
-        icon: 'fab fa-amazon',
-        downloadUrl: 'https://apkpure.com/amazon-prime-video/com.amazon.avod.thirdpartyclient/downloading',
-        badges: ["data-sharing"]
-    },
-    {
-        id: 'disney-plus',
-        name: 'Disney+',
-        developer: 'Disney',
-        category: 'entertainment',
-        rating: 4.1,
-        description: 'Stream Disney, Pixar, Marvel, Star Wars & National Geographic.',
-        icon: 'fas fa-play-circle',
-        downloadUrl: 'https://apkpure.com/disney/com.disney.disneyplus/downloading',
-        badges: ["data-sharing"]
-    },
-    {
-        id: 'hbo-max',
-        name: 'HBO Max',
-        developer: 'WarnerMedia Direct, LLC',
-        category: 'entertainment',
-        rating: 4.0,
-        description: 'Stream HBO, Warner Bros movies and Max Originals.',
-        icon: 'fas fa-film',
-        downloadUrl: 'https://apkpure.com/hbo-max/com.hbo.hbonow/downloading',
-        badges: ["data-sharing"]
-    },
+
+
+
     {
         id: 'call-of-duty-mobile',
         name: 'Call of Duty Mobile',
@@ -755,27 +680,8 @@ const appsData = [
         downloadUrl: 'https://apkpure.com/google-meet/com.google.android.apps.meetings/downloading',
         badges: ["data-sharing"]
     },
-    {
-        id: 'adobe-lightroom',
-        name: 'Adobe Lightroom',
-        developer: 'Adobe Inc.',
-        category: 'photography',
-        rating: 4.3,
-        description: 'Professional photo editing and organizing.',
-        icon: 'fas fa-image',
-        downloadUrl: 'https://apkpure.com/adobe-lightroom/com.adobe.lrmobile/downloading'
-    },
-    {
-        id: 'picsart',
-        name: 'PicsArt',
-        developer: 'PicsArt, Inc.',
-        category: 'photography',
-        rating: 4.2,
-        description: 'Photo and video editor with creative tools.',
-        icon: 'fas fa-palette',
-        downloadUrl: 'https://apkpure.com/picsart-photo-video-editor/com.picsart.studio/downloading',
-        badges: ["data-sharing"]
-    },
+
+
     {
         id: 'snapseed',
         name: 'Snapseed',
@@ -786,38 +692,7 @@ const appsData = [
         icon: 'fas fa-camera',
         downloadUrl: 'https://apkpure.com/snapseed/com.niksoftware.snapseed/downloading'
     },
-    {
-        id: 'google-pay',
-        name: 'Google Pay',
-        developer: 'Google LLC',
-        category: 'productivity',
-        rating: 4.0,
-        description: 'Digital wallet and payment platform.',
-        icon: 'fab fa-google-pay',
-        downloadUrl: 'https://apkpure.com/google-pay/com.google.android.apps.nfc.payment/downloading',
-        badges: ["data-sharing"]
-    },
-    {
-        id: 'paypal',
-        name: 'PayPal',
-        developer: 'PayPal Mobile',
-        category: 'productivity',
-        rating: 4.1,
-        description: 'Send, receive, and manage your money securely.',
-        icon: 'fab fa-paypal',
-        downloadUrl: 'https://apkpure.com/paypal/com.paypal.android.p2pmobile/downloading',
-        badges: ["data-sharing"]
-    },
-    {
-        id: 'shazam',
-        name: 'Shazam',
-        developer: 'Apple Inc.',
-        category: 'music',
-        rating: 4.3,
-        description: 'Identify any song playing around you.',
-        icon: 'fas fa-music',
-        downloadUrl: 'https://apkpure.com/shazam/com.shazam.android/downloading'
-    },
+
     {
         id: 'google-calendar',
         name: 'Google Calendar',
