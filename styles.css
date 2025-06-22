@@ -1,33 +1,34 @@
 /* CSS Custom Properties */
 :root {
-    /* Light Theme */
-    --primary-color: 267 85% 78%; /* #B794F6 - Purple */
-    --primary-hover: 267 85% 68%; /* #A855F7 */
-    --secondary-color: 195 100% 50%; /* #00BFFF - Cyan */
-    --accent-color: 340 75% 55%; /* #E879F9 - Pink */
-    --background: 220 13% 9%; /* #0F0F23 - Dark Navy */
-    --surface: 220 13% 11%; /* #1A1A2E */
-    --surface-elevated: 220 13% 13%; /* #232338 */
-    --text-primary: 0 0% 95%; /* #F2F2F2 */
-    --text-secondary: 0 0% 70%; /* #B3B3B3 */
-    --text-muted: 0 0% 50%; /* #808080 */
-    --border: 220 13% 18%; /* #2D2D42 */
+    /* Enhanced Modern Theme */
+    --primary-color: 259 94% 51%; /* #6366F1 - Modern Indigo */
+    --primary-hover: 259 94% 61%; /* #7C3AED */
+    --secondary-color: 158 64% 52%; /* #10B981 - Modern Green */
+    --accent-color: 329 86% 70%; /* #F472B6 - Modern Pink */
+    --background: 222 84% 5%; /* #0A0A0F - Deep Dark */
+    --surface: 220 39% 11%; /* #1E293B - Slate */
+    --surface-elevated: 217 33% 17%; /* #334155 - Elevated Slate */
+    --text-primary: 210 40% 98%; /* #F8FAFC - Near White */
+    --text-secondary: 215 20% 65%; /* #94A3B8 - Slate Gray */
+    --text-muted: 215 16% 47%; /* #64748B - Muted Slate */
+    --border: 217 33% 17%; /* #334155 - Border Slate */
     --shadow: 0 0% 0%; /* #000000 */
-    --success: 142 71% 45%; /* #10B981 */
-    --warning: 38 92% 50%; /* #F59E0B */
+    --success: 158 64% 52%; /* #10B981 */
+    --warning: 43 96% 56%; /* #F59E0B */
     --error: 0 84% 60%; /* #EF4444 */
-    --glow-primary: 267 85% 78%;
-    --glow-secondary: 195 100% 50%;
-
-    /* Glass effect */
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary-color)), hsl(var(--accent-color)));
-    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary-color)), hsl(var(--primary-color)));
-    --gradient-surface: linear-gradient(135deg, hsl(var(--surface)), hsl(var(--surface-elevated)));
+    --glow-primary: 259 94% 51%;
+    --glow-secondary: 158 64% 52%;
+    
+    /* Enhanced Glass effect */
+    --glass-bg: rgba(30, 41, 59, 0.6);
+    --glass-border: rgba(148, 163, 184, 0.1);
+    --glass-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+    
+    /* Modern Gradients */
+    --gradient-primary: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #F472B6 100%);
+    --gradient-secondary: linear-gradient(135deg, #10B981 0%, #059669 50%, #047857 100%);
+    --gradient-surface: linear-gradient(135deg, #1E293B 0%, #334155 100%);
+    --gradient-hero: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #334155 100%);
 }
 
 
@@ -223,12 +224,12 @@ body {
     min-height: calc(100vh - 68px);
 }
 
-/* Hero Section */
+/* Enhanced Hero Section */
 .hero {
-    background: var(--gradient-primary);
+    background: var(--gradient-hero);
     position: relative;
     color: white;
-    padding: 120px 0 80px;
+    padding: 140px 0 100px;
     text-align: center;
     overflow: hidden;
 }
@@ -428,14 +429,18 @@ body {
 }
 
 .app-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
-    border-radius: 24px;
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(51, 65, 85, 0.7));
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 28px;
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
+    box-shadow: 
+        0 10px 25px -5px rgba(0, 0, 0, 0.3),
+        0 8px 10px -6px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(248, 250, 252, 0.1);
 }
 
 .app-card::before {
@@ -452,11 +457,12 @@ body {
 }
 
 .app-card:hover {
-    transform: translateY(-8px) scale(1.02);
+    transform: translateY(-12px) scale(1.03);
     box-shadow: 
-        0 25px 50px hsla(var(--shadow) / 0.3),
-        0 0 0 1px hsla(var(--glow-primary) / 0.2),
-        0 0 30px hsla(var(--glow-primary) / 0.1);
+        0 35px 60px -12px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(99, 102, 241, 0.3),
+        0 0 40px rgba(99, 102, 241, 0.2),
+        inset 0 1px 0 rgba(248, 250, 252, 0.2);
 }
 
 .app-card:hover::before {
@@ -714,6 +720,65 @@ body {
     50% { 
         box-shadow: 0 0 20px hsla(var(--glow-primary) / 0.6), 0 0 30px hsla(var(--glow-primary) / 0.4);
     }
+}
+
+@keyframes clickFeedback {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(3);
+        opacity: 0;
+    }
+}
+
+@keyframes slideInFromBottom {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Enhanced UI Improvements */
+body.lg-wing-mode .main-display {
+    transition: all 0.5s ease;
+}
+
+body.lg-wing-mode .secondary-display {
+    animation: slideInFromBottom 0.5s ease;
+}
+
+/* Enhanced category cards */
+.category-card {
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.6));
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 24px;
+    padding: 32px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        0 10px 25px -5px rgba(0, 0, 0, 0.2),
+        0 8px 10px -6px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(248, 250, 252, 0.1);
+}
+
+.category-card:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 
+        0 35px 60px -12px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(99, 102, 241, 0.2),
+        0 0 30px rgba(99, 102, 241, 0.15),
+        inset 0 1px 0 rgba(248, 250, 252, 0.2);
 }
 
 @keyframes slideInUp {
@@ -1031,7 +1096,7 @@ body::before {
         padding: 4px 0;
     }
 
-
+    
 
     .hero-content h1 {
         font-size: 32px;
@@ -1120,7 +1185,7 @@ body::before {
         font-size: 12px;
     }
 
-
+    
 
     .hero {
         padding: 60px 0;
@@ -1148,6 +1213,186 @@ body::before {
     .hot-apps-scroll .app-card {
         flex: 0 0 260px;
         min-width: 260px;
+    }
+}
+
+/* LG Wing Dual Screen Support */
+.lg-wing-container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.main-display {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.content-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.secondary-display {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 300px;
+    background: linear-gradient(145deg, #0F172A, #1E293B);
+    border-top: 2px solid rgba(99, 102, 241, 0.3);
+    z-index: 2000;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.touchpad-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px;
+    gap: 16px;
+}
+
+.touchpad {
+    flex: 1;
+    background: linear-gradient(145deg, #1E293B, #334155);
+    border: 2px solid rgba(148, 163, 184, 0.2);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    cursor: crosshair;
+    user-select: none;
+    box-shadow: 
+        inset 0 4px 8px rgba(0, 0, 0, 0.3),
+        0 4px 16px rgba(99, 102, 241, 0.1);
+}
+
+.touchpad-cursor {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #6366F1;
+    border-radius: 50%;
+    box-shadow: 0 0 12px #6366F1;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: all 0.1s ease;
+    z-index: 10;
+}
+
+.touchpad-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: rgba(148, 163, 184, 0.7);
+    pointer-events: none;
+}
+
+.touchpad-instructions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.touchpad-instructions i {
+    font-size: 24px;
+    color: #6366F1;
+}
+
+.touchpad-instructions span {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.touchpad-instructions small {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.touchpad-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.touchpad-btn {
+    background: linear-gradient(145deg, #334155, #475569);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 12px;
+    color: #F8FAFC;
+    padding: 12px 20px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 80px;
+    justify-content: center;
+}
+
+.touchpad-btn:hover {
+    background: linear-gradient(145deg, #475569, #64748B);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+.touchpad-btn:active {
+    transform: translateY(0);
+    background: linear-gradient(145deg, #6366F1, #8B5CF6);
+}
+
+.touchpad-btn.active {
+    background: linear-gradient(145deg, #6366F1, #8B5CF6);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+}
+
+/* LG Wing Detection Media Query */
+@media screen and (orientation: landscape) and (max-height: 1080px) and (min-width: 2340px) {
+    .lg-wing-container {
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .main-display {
+        width: 70%;
+        height: 100vh;
+    }
+    
+    .secondary-display {
+        display: block;
+        position: relative;
+        width: 30%;
+        height: 100vh;
+        border-top: none;
+        border-left: 2px solid rgba(99, 102, 241, 0.3);
+    }
+    
+    .touchpad-container {
+        height: 100%;
+        padding: 40px 20px;
+    }
+}
+
+/* Enhanced animations for LG Wing */
+@media screen and (orientation: landscape) and (max-height: 1080px) and (min-width: 2340px) {
+    .app-card {
+        transition: all 0.3s ease;
+    }
+    
+    .hot-apps-scroll {
+        scroll-behavior: smooth;
+    }
+    
+    .touchpad-cursor {
+        animation: pulse 2s infinite;
     }
 }
 
@@ -1269,23 +1514,82 @@ body::before {
     line-height: 1.6;
 }
 
+.store-info-content {
+    text-align: left;
+}
+
+.info-grid {
+    display: grid;
+    gap: 12px;
+    margin: 16px 0;
+    background: rgba(30, 41, 59, 0.3);
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    font-weight: 600;
+    color: hsl(var(--text-primary));
+    font-size: 14px;
+}
+
+.info-value {
+    font-family: 'Courier New', monospace;
+    color: hsl(var(--primary-color));
+    font-size: 13px;
+    background: rgba(99, 102, 241, 0.1);
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
 .badge-modal-close {
     position: absolute;
-    top: 16px;
-    right: 16px;
-    background: none;
-    border: none;
-    color: hsl(var(--text-muted));
+    top: 12px;
+    right: 12px;
+    background: #EF4444;
+    border: 2px solid #FFFFFF;
+    color: #FFFFFF;
     cursor: pointer;
     padding: 8px;
     border-radius: 50%;
     transition: all 0.2s ease;
-    font-size: 16px;
+    font-size: 18px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10002;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .badge-modal-close:hover {
-    background: var(--glass-bg);
-    color: hsl(var(--text-primary));
+    background: #DC2626;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.badge-modal-close:active {
+    transform: scale(0.9);
+    background: #B91C1C;
+}
+
+.badge-modal-close i {
+    pointer-events: none;
 }
 
 /* Browser Error Modal */
