@@ -3,240 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Critical System Alert: Acue Services Offline</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #e0e0e0;
-            font-family: 'Roboto', Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh; /* Ensure it takes full viewport height */
-            margin: 0;
-            text-align: center;
-            padding: 10px; /* Reduced overall padding */
-            box-sizing: border-box;
-            overflow: hidden;
-        }
-
-        .animated-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 0;
-            opacity: 0.08;
-        }
-
-        .animated-background::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background:
-                linear-gradient(to right, rgba(0, 123, 255, 0.1) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 123, 255, 0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: pan-background 90s linear infinite;
-        }
-
-        @keyframes pan-background {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(-50%, -50%); }
-        }
-
-        .container {
-            background-color: #1a1a1a;
-            padding: 30px; /* Reduced padding */
-            border-radius: 15px;
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
-            max-width: 600px; /* Slightly reduced max-width */
-            width: 100%;
-            border: 1px solid #333333;
-            position: relative;
-            z-index: 1;
-            animation: fade-in 1s ease-out;
-        }
-
-        @keyframes fade-in {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .warning-icon {
-            font-size: 80px; /* Smaller icon */
-            color: #ffda44;
-            margin-bottom: 20px; /* Reduced margin */
-            animation: pulse-grow 1.5s infinite alternate ease-in-out;
-            display: block;
-        }
-
-        @keyframes pulse-grow {
-            0% { transform: scale(1); opacity: 0.9; }
-            100% { transform: scale(1.05); opacity: 1; }
-        }
-
-        h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.5em; /* Smaller heading */
-            margin-bottom: 20px; /* Reduced margin */
-            color: #ffffff;
-            font-weight: 700;
-            line-height: 1.2;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        p {
-            font-size: 1em; /* Smaller paragraph text */
-            line-height: 1.6; /* Adjusted line-height */
-            margin-bottom: 20px; /* Reduced margin */
-            color: #c9c9c9;
-        }
-
-        p strong {
-            color: #ffffff;
-            font-weight: 700;
-        }
-
-        .more-info {
-            font-size: 0.85em; /* Even smaller more-info text */
-            color: #a0a0a0;
-            margin-top: 30px; /* Reduced margin */
-            line-height: 1.5; /* Adjusted line-height */
-        }
-
-        .more-info a {
-            color: #00aaff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .more-info a:hover {
-            color: #4dc3ff;
-            text-decoration: underline;
-        }
-
-        .reload-button {
-            background-color: #007bff;
-            color: white;
-            padding: 12px 25px; /* Smaller padding */
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1.1em; /* Smaller button text */
-            font-weight: 600;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            margin-top: 25px; /* Reduced margin */
-            box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4);
-            letter-spacing: 0.5px;
-        }
-
-        .reload-button:hover {
-            background-color: #0056b3;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.5);
-        }
-
-        .reload-button:active {
-            transform: translateY(0);
-            box-shadow: 0 3px 8px rgba(0, 123, 255, 0.4);
-        }
-
-        .loading-animation {
-            margin-top: 30px; /* Reduced margin */
-            height: 30px; /* Smaller height */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .loading-bar {
-            width: 70px; /* Smaller width */
-            height: 5px; /* Thinner */
-            background-color: #007bff;
-            border-radius: 3px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .loading-bar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            animation: loading-stripe 1.5s infinite linear;
-        }
-
-        @keyframes loading-stripe {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        /* Mobile Optimization: Further adjustments for very small screens */
-        @media (max-width: 480px) {
-            .container {
-                padding: 20px; /* Even less padding */
-            }
-            h1 {
-                font-size: 1.8em;
-                margin-bottom: 15px;
-            }
-            .warning-icon {
-                font-size: 60px;
-                margin-bottom: 15px;
-            }
-            p {
-                font-size: 0.9em;
-                margin-bottom: 15px;
-            }
-            .more-info {
-                font-size: 0.8em;
-                margin-top: 20px;
-            }
-            .reload-button {
-                padding: 10px 20px;
-                font-size: 1em;
-                margin-top: 20px;
-            }
-            .loading-animation {
-                margin-top: 20px;
-            }
-            .loading-bar {
-                width: 50px;
-                height: 4px;
-            }
-        }
-    </style>
+    <title>Acue Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="animated-background"></div>
-    <div class="container">
-        <div class="warning-icon">&#9888;</div>
-        <h1>System Alert: Acue Services Offline</h1>
-        <p>We've hit a critical issue: our core Acue Services are currently unreachable. This means some essential features might not work right now.</p>
-        <p>Our team is automatically alerted and working to restore full service. Thanks for your patience!</p>
+    <!-- LG Wing Dual Screen Support -->
+    <div id="lgWingContainer" class="lg-wing-container">
+        <!-- Main Display Content -->
+        <div id="mainDisplay" class="main-display">
+            <div class="content-wrapper">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Acue Store</span>
+                </div>
 
-        <div class="loading-animation">
-            <div class="loading-bar"></div>
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search apps...">
+                </div>
+
+                <nav class="nav">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#games" class="nav-link">Games</a>
+                    <a href="#apps" class="nav-link">Apps</a>
+                    <a href="#categories" class="nav-link">Categories</a>
+                    <a href="#about" class="nav-link" id="aboutStoreLink">About Store</a>
+                </nav>
+            </div>
         </div>
+    </header>
 
-        <button class="reload-button" onclick="location.reload()">Attempt System Restart</button>
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h1> </h1>
+                    <p>Welcome to Acue Store.</p> 
+                    <p>Disclaimer: Some apps may be unstable</p>
+                    <p>Version: Store Ui 2.0</p>
+                </div>
+            </section>
 
-        <p class="more-info">
-            Acue Services are vital for your security, data privacy, and a smooth experience. Without them, certain safeguards might be inactive.
-            <br><br>
-            If the problem continues, please feel free to <a href="https://twitter.com/AcueGB" target="_blank" rel="noopener noreferrer">reach out to AcueGB on Twitter</a> for help.
-        </p>
+            <!-- Categories -->
+            <section class="categories-section">
+                <h2 class="section-title">Categories</h2>
+                <div class="categories-grid">
+                    <div class="category-card" data-category="social">
+                        <i class="fas fa-users"></i>
+                        <span>Social Media</span>
+                    </div>
+                    <div class="category-card" data-category="entertainment">
+                        <i class="fas fa-play-circle"></i>
+                        <span>Entertainment</span>
+                    </div>
+                    <div class="category-card" data-category="games">
+                        <i class="fas fa-gamepad"></i>
+                        <span>Games</span>
+                    </div>
+                    <div class="category-card" data-category="productivity">
+                        <i class="fas fa-briefcase"></i>
+                        <span>Productivity</span>
+                    </div>
+                    <div class="category-card" data-category="photography">
+                        <i class="fas fa-camera"></i>
+                        <span>Photography</span>
+                    </div>
+                    <div class="category-card" data-category="music">
+                        <i class="fas fa-music"></i>
+                        <span>Music</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hot Apps -->
+            <section class="hot-apps-section">
+                <h2 class="section-title">🔥 Hot | Recommended apps </h2>
+                <div class="hot-apps-container">
+                    <div class="hot-apps-scroll" id="hotAppsGrid">
+                        <!-- Hot apps will be dynamically loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Apps -->
+            <section class="featured-section">
+                <h2 class="section-title">Featured Apps</h2>
+                <div class="apps-grid" id="appsGrid">
+                    <!-- Apps will be dynamically loaded here -->
+                </div>
+            </section>
+
+            <!-- Loading Indicator -->
+            <div class="loading" id="loading" style="display: none;">
+                <i class="fas fa-spinner fa-spin"></i>
+                <span>Loading apps...</span>
+            </div>
+
+            <!-- No Results Message -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>No apps found</h3>
+                <p>Try adjusting your search terms or browse different categories.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Acue Store</h3>
+                    <p>Your trusted source for Android apps</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#apps">Apps</a></li>
+                        <li><a href="#games">Games</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#help">Help Center</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Acue Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Badge Modal -->
+    <div id="badgeModal" class="badge-modal">
+        <div class="badge-modal-content">
+            <button class="badge-modal-close" id="badgeModalClose" type="button" onclick="window.acueStore && window.acueStore.hideBadgeModal()">
+                ✕
+            </button>
+            <div class="badge-modal-header">
+                <span class="badge-modal-icon" id="badgeModalIcon"></span>
+                <h3 class="badge-modal-title" id="badgeModalTitle"></h3>
+            </div>
+            <div class="badge-modal-body" id="badgeModalBody"></div>
+        </div>
     </div>
+
+        </div>
+    </div>
+
+    <!-- LG Wing Secondary Display (Virtual Touchpad) -->
+    <div id="secondaryDisplay" class="secondary-display">
+        <div class="touchpad-container">
+            <div class="touchpad" id="virtualTouchpad">
+                <div class="touchpad-cursor" id="touchpadCursor"></div>
+                <div class="touchpad-overlay">
+                    <div class="touchpad-instructions">
+                        <i class="fas fa-hand-pointer"></i>
+                        <span>Virtual Touchpad</span>
+                        <small>Move to control cursor</small>
+                    </div>
+                </div>
+            </div>
+            <div class="touchpad-buttons">
+                <button class="touchpad-btn left-click" id="leftClick">
+                    <i class="fas fa-mouse-pointer"></i>
+                    Left
+                </button>
+                <button class="touchpad-btn right-click" id="rightClick">
+                    <i class="fas fa-mouse"></i>
+                    Right
+                </button>
+                <button class="touchpad-btn scroll-mode" id="scrollMode">
+                    <i class="fas fa-arrows-alt-v"></i>
+                    Scroll
+                </button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="apps-config.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
