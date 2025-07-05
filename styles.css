@@ -18,12 +18,12 @@
     --error: 0 84% 60%; /* #EF4444 */
     --glow-primary: 259 94% 51%;
     --glow-secondary: 158 64% 52%;
-    
+
     /* Enhanced Glass effect */
     --glass-bg: rgba(30, 41, 59, 0.6);
     --glass-border: rgba(148, 163, 184, 0.1);
     --glass-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
-    
+
     /* Modern Gradients */
     --gradient-primary: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #F472B6 100%);
     --gradient-secondary: linear-gradient(135deg, #10B981 0%, #059669 50%, #047857 100%);
@@ -229,7 +229,7 @@ body {
     background: var(--gradient-hero);
     position: relative;
     color: white;
-    padding: 140px 0 100px;
+    padding: 180px 0 100px;
     text-align: center;
     overflow: hidden;
 }
@@ -271,6 +271,102 @@ body {
     margin: 0 auto;
     font-weight: 300;
     letter-spacing: 0.5px;
+}
+
+/* Tribute Section Styles */
+.tribute-section {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.tribute-image {
+    margin-bottom: 24px;
+}
+
+.tribute-photo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.tribute-photo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+}
+
+.tribute-name {
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    background: linear-gradient(45deg, #ffffff, #e0e7ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+    line-height: 1.2;
+}
+
+.tribute-years {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 24px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.tribute-quote {
+    font-size: 20px;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 20px;
+    font-weight: 300;
+    line-height: 1.4;
+}
+
+.tribute-description {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 300;
+    line-height: 1.5;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero {
+        padding: 200px 0 80px;
+    }
+    
+    .tribute-section {
+        padding: 0 20px;
+    }
+    
+    .tribute-photo {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .tribute-name {
+        font-size: 36px;
+    }
+    
+    .tribute-years {
+        font-size: 20px;
+    }
+    
+    .tribute-quote {
+        font-size: 18px;
+    }
+    
+    .tribute-description {
+        font-size: 16px;
+    }
 }
 
 /* Section Styles */
@@ -1096,7 +1192,7 @@ body::before {
         padding: 4px 0;
     }
 
-    
+
 
     .hero-content h1 {
         font-size: 32px;
@@ -1185,7 +1281,7 @@ body::before {
         font-size: 12px;
     }
 
-    
+
 
     .hero {
         padding: 60px 0;
@@ -1360,12 +1456,12 @@ body::before {
         display: flex;
         flex-direction: row;
     }
-    
+
     .main-display {
         width: 70%;
         height: 100vh;
     }
-    
+
     .secondary-display {
         display: block;
         position: relative;
@@ -1374,7 +1470,7 @@ body::before {
         border-top: none;
         border-left: 2px solid rgba(99, 102, 241, 0.3);
     }
-    
+
     .touchpad-container {
         height: 100%;
         padding: 40px 20px;
@@ -1386,11 +1482,11 @@ body::before {
     .app-card {
         transition: all 0.3s ease;
     }
-    
+
     .hot-apps-scroll {
         scroll-behavior: smooth;
     }
-    
+
     .touchpad-cursor {
         animation: pulse 2s infinite;
     }
