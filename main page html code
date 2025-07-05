@@ -9,6 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- LG Wing Dual Screen Support -->
+    <div id="lgWingContainer" class="lg-wing-container">
+        <!-- Main Display Content -->
+        <div id="mainDisplay" class="main-display">
+            <div class="content-wrapper">
     <!-- Header -->
     <header class="header">
         <div class="container">
@@ -28,6 +33,7 @@
                     <a href="#games" class="nav-link">Games</a>
                     <a href="#apps" class="nav-link">Apps</a>
                     <a href="#categories" class="nav-link">Categories</a>
+                    <a href="#about" class="nav-link" id="aboutStoreLink">About Store</a>
                 </nav>
             </div>
         </div>
@@ -39,10 +45,10 @@
             <!-- Hero Section -->
             <section class="hero">
                 <div class="hero-content">
-                    <h1>Acue Store</h1>
+                    <h1> </h1>
                     <p>Welcome to Acue Store.</p> 
                     <p>Disclaimer: Some apps may be unstable</p>
-                    <p>Version: Beta 1 release 2</p>
+                    <p>Version: Store Ui 2.0</p>
                 </div>
             </section>
 
@@ -138,7 +144,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Acue Store. All rights reserved.</p>
+                <p>&copy; 2025 Acue Store. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -146,8 +152,8 @@
     <!-- Badge Modal -->
     <div id="badgeModal" class="badge-modal">
         <div class="badge-modal-content">
-            <button class="badge-modal-close" id="badgeModalClose">
-                <i class="fas fa-times"></i>
+            <button class="badge-modal-close" id="badgeModalClose" type="button" onclick="window.acueStore && window.acueStore.hideBadgeModal()">
+                ✕
             </button>
             <div class="badge-modal-header">
                 <span class="badge-modal-icon" id="badgeModalIcon"></span>
@@ -155,6 +161,40 @@
             </div>
             <div class="badge-modal-body" id="badgeModalBody"></div>
         </div>
+    </div>
+
+        </div>
+    </div>
+
+    <!-- LG Wing Secondary Display (Virtual Touchpad) -->
+    <div id="secondaryDisplay" class="secondary-display">
+        <div class="touchpad-container">
+            <div class="touchpad" id="virtualTouchpad">
+                <div class="touchpad-cursor" id="touchpadCursor"></div>
+                <div class="touchpad-overlay">
+                    <div class="touchpad-instructions">
+                        <i class="fas fa-hand-pointer"></i>
+                        <span>Virtual Touchpad</span>
+                        <small>Move to control cursor</small>
+                    </div>
+                </div>
+            </div>
+            <div class="touchpad-buttons">
+                <button class="touchpad-btn left-click" id="leftClick">
+                    <i class="fas fa-mouse-pointer"></i>
+                    Left
+                </button>
+                <button class="touchpad-btn right-click" id="rightClick">
+                    <i class="fas fa-mouse"></i>
+                    Right
+                </button>
+                <button class="touchpad-btn scroll-mode" id="scrollMode">
+                    <i class="fas fa-arrows-alt-v"></i>
+                    Scroll
+                </button>
+            </div>
+        </div>
+    </div>
     </div>
 
     <script src="apps-config.js"></script>
