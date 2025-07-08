@@ -537,15 +537,15 @@ class AcueStore {
                             </div>
                             <div class="info-item">
                                 <span class="info-label">Security Patch:</span>
-                                <span class="info-value">June 22, 2025</span>
+                                <span class="info-value">July 8 2025</span>
                             </div>
                             <div class="info-item">
                                 <span class="info-label">ASPFU Version:</span>
-                                <span class="info-value">Alpha-S6000ASPFUV209</span>
+                                <span class="info-value">Beta-S6000ASPFUV918</span>
                             </div>
                             <div class="info-item">
                                 <span class="info-label">Axcu Build:</span>
-                                <span class="info-value">S6000Y25MJD8SU2O</span>
+                                <span class="info-value">S6000Y25MJD8SU03</span>
                             </div>
                         </div>
                         <p>Acue Store provides safe and verified APK downloads from APKPure. All apps are scanned for security before being made available.</p>
