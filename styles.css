@@ -283,6 +283,19 @@ body {
 }
 
 @media (max-width: 480px) {
+    .welcome-section {
+        padding: 30px 0;
+        margin: 0 auto 30px;
+    }
+
+    .welcome-content {
+        padding: 20px;
+    }
+
+    .welcome-content p {
+        font-size: 14px;
+    }
+
     .container {
         padding: 0 16px;
     }
@@ -366,8 +379,7 @@ body {
 }
 
 
-/* --- LG Wing Support Removal --- */
-/* Remove or comment out these blocks completely */
+/* Hide LG Wing virtual touchpad elements completely */
 .lg-wing-container,
 .main-display,
 .content-wrapper,
@@ -379,24 +391,14 @@ body {
 .touchpad-instructions,
 .touchpad-buttons,
 .touchpad-btn {
-    /* Ensure these styles are removed or commented out */
-    display: initial; /* or whatever your preferred initial display is */
-    position: initial;
-    width: initial;
-    height: initial;
-    /* ... and all other LG Wing related styles ... */
+    display: none !important;
 }
 
-/* Remove or comment out the LG Wing Detection Media Query */
-@media screen and (orientation: landscape) and (max-height: 1080px) and (min-width: 2340px) {
-    /* All styles within this block should be removed or commented out */
+/* Remove LG Wing mode class effects */
+body.lg-wing-mode .main-display,
+body.lg-wing-mode .secondary-display {
+    display: none !important;
 }
-
-/* Remove or comment out Enhanced animations for LG Wing */
-@media screen and (orientation: landscape) and (max-height: 1080px) and (min-width: 2340px) {
-    /* All styles within this block should be removed or commented out */
-}
-/* --- End LG Wing Support Removal --- */
 
 
 
@@ -636,10 +638,37 @@ body {
     color: hsl(var(--text-primary));
 }
 
+.welcome-section,
 .categories-section,
 .hot-apps-section,
 .featured-section {
     padding: 64px 0;
+}
+
+/* Welcome Section */
+.welcome-section {
+    text-align: center;
+    background: var(--glass-bg);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border: 1px solid var(--glass-border);
+    border-radius: 28px;
+    margin: 0 auto 64px;
+    max-width: 800px;
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.welcome-content {
+    padding: 32px;
+}
+
+.welcome-content p {
+    font-size: 18px;
+    color: hsl(var(--text-secondary));
+    line-height: 1.6;
+    margin: 0;
 }
 
 /* Hot Apps Section */
@@ -1239,28 +1268,18 @@ body.lg-wing-mode .secondary-display {
     opacity: 0.1;
 }
 
-/* Enhanced app card animations */
+/* Simplified app card animations */
 .app-card {
-    animation: slideInUp 0.6s ease-out;
+    animation: slideInUp 0.4s ease-out;
     animation-fill-mode: both;
 }
 
-.app-card:nth-child(odd) {
-    animation: slideInLeft 0.6s ease-out;
-    animation-fill-mode: both;
-}
-
-.app-card:nth-child(even) {
-    animation: slideInRight 0.6s ease-out;
-    animation-fill-mode: both;
-}
-
-.app-card:nth-child(1) { animation-delay: 0.1s; }
-.app-card:nth-child(2) { animation-delay: 0.2s; }
-.app-card:nth-child(3) { animation-delay: 0.3s; }
-.app-card:nth-child(4) { animation-delay: 0.4s; }
-.app-card:nth-child(5) { animation-delay: 0.5s; }
-.app-card:nth-child(6) { animation-delay: 0.6s; }
+.app-card:nth-child(1) { animation-delay: 0.05s; }
+.app-card:nth-child(2) { animation-delay: 0.1s; }
+.app-card:nth-child(3) { animation-delay: 0.15s; }
+.app-card:nth-child(4) { animation-delay: 0.2s; }
+.app-card:nth-child(5) { animation-delay: 0.25s; }
+.app-card:nth-child(6) { animation-delay: 0.3s; }
 
 /* Enhanced category card animations */
 .category-card {
@@ -1275,19 +1294,15 @@ body.lg-wing-mode .secondary-display {
 .category-card:nth-child(5) { animation-delay: 0.5s; }
 .category-card:nth-child(6) { animation-delay: 0.6s; }
 
-/* Enhanced hot badge animation */
+/* Simplified hot badge animation */
 .hot-badge {
-    animation: pulse 2s infinite, glow 3s infinite;
+    animation: pulse 2s infinite;
 }
 
-/* Enhanced button animations */
+/* Simplified button hover effects */
 .download-btn {
     position: relative;
     overflow: hidden;
-}
-
-.download-btn:hover {
-    animation: pulse 0.6s ease-in-out;
 }
 
 .download-btn::after {
@@ -1310,66 +1325,31 @@ body.lg-wing-mode .secondary-display {
     left: 100%;
 }
 
-/* Enhanced search input animation */
-.search-input:focus {
-    animation: glow 2s infinite;
-}
-
-/* Enhanced logo animation */
-.logo {
-    animation: colorShift 10s infinite;
-}
-
-/* Enhanced icon animations */
+/* Simplified icon animations */
 .app-icon {
-    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: all 0.3s ease;
 }
 
 .app-card:hover .app-icon {
-    transform: scale(1.1) rotate(5deg);
-    animation: pulse 1s infinite;
+    transform: scale(1.05);
 }
 
-/* Enhanced badge animations */
+/* Simplified badge animations */
 .app-badge {
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    position: relative;
-    overflow: hidden;
-}
-
-.app-badge::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.4),
-        transparent
-    );
-    transition: left 0.5s;
-}
-
-.app-badge:hover::before {
-    left: 100%;
+    transition: all 0.3s ease;
 }
 
 .app-badge:hover {
-    transform: scale(1.1) translateY(-2px);
-    animation: glow 1s infinite;
+    transform: scale(1.05);
 }
 
-/* Enhanced rating stars animation */
+/* Simplified rating stars animation */
 .rating-stars {
     transition: all 0.3s ease;
 }
 
 .app-card:hover .rating-stars {
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 5px #ffc107);
+    transform: scale(1.05);
 }
 
 
@@ -1380,23 +1360,17 @@ body.lg-wing-mode .secondary-display {
     animation: bounceIn 0.5s ease-out;
 }
 
-/* Enhanced loading animation */
+/* Simplified loading animation */
 .loading i {
-    animation: spin 1s linear infinite, colorShift 3s infinite;
+    animation: spin 1s linear infinite;
 }
 
-/* Enhanced footer animation */
+/* Remove excessive footer animations */
 .footer-section {
-    animation: slideInUp 0.8s ease-out;
-    animation-fill-mode: both;
+    opacity: 1;
 }
 
-.footer-section:nth-child(1) { animation-delay: 0.1s; }
-.footer-section:nth-child(2) { animation-delay: 0.2s; }
-.footer-section:nth-child(3) { animation-delay: 0.3s; }
-.footer-section:nth-child(4) { animation-delay: 0.4s; }
-
-/* Background animation */
+/* Simplified background */
 body::before {
     content: '';
     position: fixed;
@@ -1408,13 +1382,25 @@ body::before {
         radial-gradient(circle at 20% 20%, hsla(var(--glow-primary) / 0.1) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, hsla(var(--glow-secondary) / 0.1) 0%, transparent 50%),
         radial-gradient(circle at 40% 60%, hsla(var(--accent-color) / 0.05) 0%, transparent 50%);
-    animation: colorShift 20s infinite;
     z-index: -1;
     pointer-events: none;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .welcome-section {
+        padding: 40px 0;
+        margin: 0 auto 40px;
+    }
+
+    .welcome-content {
+        padding: 24px;
+    }
+
+    .welcome-content p {
+        font-size: 16px;
+    }
+
     .header {
         position: fixed;
         top: 0;
