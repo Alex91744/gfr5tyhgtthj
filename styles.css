@@ -19,10 +19,12 @@
     --glow-primary: 259 94% 51%;
     --glow-secondary: 158 64% 52%;
 
-    /* Enhanced Glass effect */
-    --glass-bg: rgba(30, 41, 59, 0.6);
-    --glass-border: rgba(148, 163, 184, 0.1);
-    --glass-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+    /* Enhanced Glass effect - More transparent like iOS 26 */
+    --glass-bg: rgba(30, 41, 59, 0.15);
+    --glass-bg-light: rgba(255, 255, 255, 0.08);
+    --glass-bg-medium: rgba(30, 41, 59, 0.25);
+    --glass-border: rgba(148, 163, 184, 0.2);
+    --glass-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
 
     /* Modern Gradients */
     --gradient-primary: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #F472B6 100%);
@@ -31,8 +33,6 @@
     --gradient-hero: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #334155 100%);
 }
 
-
-
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -40,17 +40,22 @@
     box-sizing: border-box;
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    /* Ensure no overflow on the x-axis that could cause scrollbars */
+    overflow-x: hidden;
+}
+
 body {
-    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: hsl(var(--background));
-    background-image: 
-        radial-gradient(circle at 20% 20%, hsla(var(--glow-primary) / 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, hsla(var(--glow-secondary) / 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 60%, hsla(var(--accent-color) / 0.05) 0%, transparent 50%);
-    color: hsl(var(--text-primary));
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 25%, #667eea 50%, #764ba2 75%, #f093fb 100%);
+    background-attachment: fixed;
+    color: rgba(255, 255, 255, 0.95);
     line-height: 1.6;
     min-height: 100vh;
-    overflow-x: hidden;
 }
 
 .container {
@@ -62,22 +67,23 @@ body {
 /* Header Styles */
 .header {
     background: var(--glass-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
     border-bottom: 1px solid var(--glass-border);
     box-shadow: var(--glass-shadow);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 1100; /* Ensure header is above other elements */
+    width: 100%;
 }
 
 .header-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 0;
+    padding: 12px 20px; /* This padding defines the header's height and internal spacing */
     gap: 20px;
 }
 
@@ -133,69 +139,44 @@ body {
     background-color: hsl(var(--primary-color));
 }
 
-.logo-search-container {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+/* Remove the weird line at the bottom of nav-link buttons */
+.nav-link {
+    border-bottom: none;
 }
 
-.search-container-compact {
-    position: relative;
-    display: flex;
-    align-items: center;
+/* Mobile navigation: Remove the active line at the bottom */
+@media (max-width: 768px) {
+    .nav-link.active::after {
+        display: none !important;
+    }
 }
 
-.search-input-compact {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
-    padding: 8px 40px 8px 14px;
-    color: hsl(var(--text-primary));
-    font-size: 14px;
-    width: 200px;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-}
-
-.search-input-compact:focus {
-    outline: none;
-    border-color: hsl(var(--primary-color));
-    box-shadow: 0 0 0 2px hsla(var(--glow-primary) / 0.2);
-    width: 250px;
-}
-
-.search-icon-compact {
-    position: absolute;
-    right: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: hsl(var(--text-muted));
-    font-size: 14px;
-    cursor: pointer;
-}
+/* Removed .logo-search-container and compact search styles as they weren't in your HTML */
+/* You had `search-container` in your HTML, so we'll focus on that. */
 
 
-
-
-
+/* Search Container adjustments */
 .search-container {
     position: relative;
-    max-width: 400px;
-    flex: 1;
+    flex: 1; /* Allows it to take available space in header-content */
+    display: flex; /* Ensures search icon and input are aligned */
+    align-items: center;
+    z-index: 5; /* Ensure container has proper stacking context */
 }
 
 .search-input {
     width: 100%;
-    padding: 10px 14px 10px 40px;
+    padding: 10px 14px; /* Removed left padding for icon */
     border: 1px solid var(--glass-border);
     border-radius: 20px;
     font-size: 14px;
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: var(--glass-bg-light);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
     color: hsl(var(--text-primary));
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
 }
 
 .search-input::placeholder {
@@ -209,20 +190,217 @@ body {
     background: hsla(var(--surface-elevated) / 0.8);
 }
 
-.search-icon {
-    position: absolute;
-    left: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: hsl(var(--text-muted));
-    font-size: 14px;
-}
+
 
 /* Main Content */
 .main {
-    margin-top: 68px;
-    min-height: calc(100vh - 68px);
+    padding-top: 80px; /* Adjusted to push content below the fixed header */
+    min-height: calc(100vh - 80px); /* Adjust min-height accordingly */
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        padding: 0;
+        margin: 0;
+        background: var(--glass-bg);
+        backdrop-filter: blur(40px);
+        -webkit-backdrop-filter: blur(40px);
+        border-bottom: 1px solid var(--glass-border);
+    }
+
+    .header-content {
+        flex-direction: column;
+        gap: 8px;
+        padding: 10px 0; /* Compact but breathable padding */
+    }
+
+    .logo {
+        font-size: 18px;
+        text-align: center;
+        margin-bottom: 2px;
+        width: 100%;
+    }
+
+    .logo i {
+        font-size: 20px;
+    }
+
+    .search-container {
+        width: 100%;
+        padding: 0 20px;
+        margin-bottom: 2px;
+    }
+
+    .search-input {
+        width: 100%;
+        font-size: 14px;
+        padding: 8px 14px;
+        border-radius: 12px;
+    }
+
+    .nav {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        padding: 4px 16px 6px;
+        flex-wrap: wrap;
+    }
+
+    .nav-link {
+        font-size: 11px;
+        padding: 4px 8px;
+        border-radius: 12px;
+        background: var(--glass-bg-light);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid var(--glass-border);
+        text-decoration: none;
+        transition: all 0.2s ease;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        white-space: nowrap;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+        background: var(--gradient-primary);
+        color: white;
+        border-color: hsl(var(--primary-color));
+    }
+
+    .main {
+        padding-top: 120px; /* Reduced space since tribute is more compact */
+        min-height: calc(100vh - 120px);
+    }
+
+    /* ... (rest of your 768px media queries) ... */
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    .header {
+        top: 0;
+        position: fixed;
+        padding: 0;
+        margin: 0;
+    }
+
+    .header-content {
+        padding: 8px 0;
+        gap: 6px;
+    }
+
+    .main {
+        padding-top: 140px; /* Much more space to push tribute below header */
+        min-height: calc(100vh - 140px);
+    }
+
+    .logo {
+        font-size: 16px;
+        margin-bottom: 0;
+    }
+
+    .logo i {
+        font-size: 18px;
+    }
+
+    .search-container {
+        padding: 0 16px;
+        margin-bottom: 0;
+    }
+
+    .search-input {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+
+    .nav {
+        gap: 6px;
+        padding: 2px 12px 4px;
+    }
+
+    .nav-link {
+        font-size: 10px;
+        padding: 3px 6px;
+    }
+
+    /* ... (rest of your 480px media queries) ... */
+}
+
+    .hero {
+        padding: 60px 0;
+    }
+
+    .app-header {
+        padding: 16px;
+    }
+
+    .app-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 20px;
+    }
+
+    .app-name {
+        font-size: 16px;
+    }
+
+    .download-btn {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+
+    .hot-apps-scroll .app-card {
+        flex: 0 0 260px;
+        min-width: 260px;
+    }
+}
+
+
+/* --- LG Wing Support Removal --- */
+/* Remove or comment out these blocks completely */
+.lg-wing-container,
+.main-display,
+.content-wrapper,
+.secondary-display,
+.touchpad-container,
+.touchpad,
+.touchpad-cursor,
+.touchpad-overlay,
+.touchpad-instructions,
+.touchpad-buttons,
+.touchpad-btn {
+    /* Ensure these styles are removed or commented out */
+    display: initial; /* or whatever your preferred initial display is */
+    position: initial;
+    width: initial;
+    height: initial;
+    /* ... and all other LG Wing related styles ... */
+}
+
+/* Remove or comment out the LG Wing Detection Media Query */
+@media screen and (orientation: landscape) and (max-height: 1080px) and (min-width: 2340px) {
+    /* All styles within this block should be removed or commented out */
+}
+
+/* Remove or comment out Enhanced animations for LG Wing */
+@media screen and (orientation: landscape) and (max-height: 1080px) and (min-width: 2340px) {
+    /* All styles within this block should be removed or commented out */
+}
+/* --- End LG Wing Support Removal --- */
+
+
+
+/* Existing styles below this line are kept as is */
 
 /* Enhanced Hero Section */
 .hero {
@@ -241,7 +419,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
+    background:
         radial-gradient(circle at 30% 30%, hsla(var(--glow-primary) / 0.3) 0%, transparent 50%),
         radial-gradient(circle at 70% 70%, hsla(var(--glow-secondary) / 0.3) 0%, transparent 50%);
     z-index: 1;
@@ -275,9 +453,11 @@ body {
 
 /* Tribute Section Styles */
 .tribute-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
+    gap: 16px;
 }
 
 .tribute-image {
@@ -285,87 +465,166 @@ body {
 }
 
 .tribute-photo {
-    width: 160px;
-    height: 160px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
-    border: 4px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
     object-fit: cover;
-    transition: all 0.3s ease;
+    border: 4px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+    animation: glow 3s ease-in-out infinite alternate;
 }
 
-.tribute-photo:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+@keyframes glow {
+    from {
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.3), 0 0 60px rgba(255, 255, 255, 0.2);
+    }
+    to {
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.3), 0 0 80px rgba(255, 255, 255, 0.4);
+    }
 }
 
 .tribute-name {
     font-size: 48px;
     font-weight: 800;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     background: linear-gradient(45deg, #ffffff, #e0e7ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
-    line-height: 1.2;
 }
 
 .tribute-years {
-    font-size: 24px;
+    font-size: 18px;
     color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     font-weight: 300;
-    letter-spacing: 1px;
 }
 
 .tribute-quote {
-    font-size: 20px;
+    font-size: 22px;
     font-style: italic;
     color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 20px;
-    font-weight: 300;
-    line-height: 1.4;
+    margin-bottom: 16px;
+    max-width: 600px;
+    font-weight: 400;
 }
 
 .tribute-description {
     font-size: 18px;
-    color: rgba(255, 255, 255, 0.85);
-    font-weight: 300;
-    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 32px;
     max-width: 500px;
-    margin: 0 auto;
+    line-height: 1.6;
 }
 
-/* Mobile Responsive Adjustments */
+.tribute-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 600px;
+}
+
+.tribute-message {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tribute-message:last-child {
+    border-bottom: none;
+}
+
+/* Mobile responsive for tribute section */
 @media (max-width: 768px) {
     .hero {
-        padding: 200px 0 80px;
+        padding: 30px 0 20px; /* Reduced padding for more compact layout */
     }
     
     .tribute-section {
-        padding: 0 20px;
+        gap: 4px; /* Much tighter gap between elements */
+    }
+    
+    .tribute-image {
+        margin-bottom: 8px; /* Reduce bottom margin */
     }
     
     .tribute-photo {
-        width: 140px;
-        height: 140px;
+        width: 80px;
+        height: 80px;
     }
     
     .tribute-name {
-        font-size: 36px;
+        font-size: 18px;
+        margin-bottom: 2px;
     }
     
     .tribute-years {
-        font-size: 20px;
+        font-size: 12px;
+        margin-bottom: 4px;
     }
     
     .tribute-quote {
-        font-size: 18px;
+        font-size: 12px;
+        margin-bottom: 4px;
+        line-height: 1.3;
     }
     
     .tribute-description {
+        font-size: 11px;
+        margin-bottom: 8px;
+        line-height: 1.4;
+    }
+    
+    .tribute-messages {
+        display: none; /* Hide tribute messages on mobile to save space */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 20px 0 15px; /* Much more compact padding */
+    }
+    
+    .tribute-section {
+        gap: 2px;
+    }
+    
+    .tribute-image {
+        margin-bottom: 4px;
+    }
+    
+    .tribute-photo {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .tribute-name {
         font-size: 16px;
+        margin-bottom: 1px;
+    }
+    
+    .tribute-years {
+        font-size: 11px;
+        margin-bottom: 2px;
+    }
+    
+    .tribute-quote {
+        font-size: 10px;
+        margin-bottom: 2px;
+        line-height: 1.2;
+    }
+    
+    .tribute-description {
+        font-size: 9px;
+        margin-bottom: 4px;
+        line-height: 1.3;
+    }
+    
+    .tribute-messages {
+        display: none; /* Hide tribute messages on small screens */
     }
 }
 
@@ -450,7 +709,7 @@ body {
 }
 
 .app-card.hot-app:hover {
-    box-shadow: 
+    box-shadow:
         0 25px 50px hsla(var(--shadow) / 0.3),
         0 0 0 1px hsla(var(--glow-primary) / 0.4),
         0 0 40px hsla(var(--glow-primary) / 0.2);
@@ -525,18 +784,17 @@ body {
 }
 
 .app-card {
-    background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(51, 65, 85, 0.7));
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(148, 163, 184, 0.2);
+    background: var(--glass-bg);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border: 1px solid var(--glass-border);
     border-radius: 28px;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
-    box-shadow: 
-        0 10px 25px -5px rgba(0, 0, 0, 0.3),
-        0 8px 10px -6px rgba(0, 0, 0, 0.1),
-        inset 0 1px 0 rgba(248, 250, 252, 0.1);
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .app-card::before {
@@ -554,7 +812,7 @@ body {
 
 .app-card:hover {
     transform: translateY(-12px) scale(1.03);
-    box-shadow: 
+    box-shadow:
         0 35px 60px -12px rgba(0, 0, 0, 0.4),
         0 0 0 1px rgba(99, 102, 241, 0.3),
         0 0 40px rgba(99, 102, 241, 0.2),
@@ -575,15 +833,20 @@ body {
 .app-icon {
     width: 72px;
     height: 72px;
-    border-radius: 16px;
-    background: var(--gradient-primary);
+    border-radius: 20px;
+    background: var(--glass-bg-light);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid var(--glass-border);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: hsl(var(--primary-color));
     font-size: 28px;
     flex-shrink: 0;
-    box-shadow: 0 8px 20px hsla(var(--glow-primary) / 0.3);
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
     position: relative;
     overflow: hidden;
 }
@@ -668,9 +931,11 @@ body {
 }
 
 .download-btn {
-    background: var(--gradient-primary);
-    color: white;
-    border: none;
+    background: var(--glass-bg-light);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid var(--glass-border);
+    color: hsl(var(--primary-color));
     border-radius: 28px;
     padding: 14px 28px;
     font-size: 14px;
@@ -683,7 +948,9 @@ body {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 15px hsla(var(--glow-primary) / 0.3);
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .download-btn::before {
@@ -799,21 +1066,21 @@ body {
 }
 
 @keyframes pulse {
-    0%, 100% { 
+    0%, 100% {
         transform: scale(1);
         opacity: 1;
     }
-    50% { 
+    50% {
         transform: scale(1.05);
         opacity: 0.8;
     }
 }
 
 @keyframes glow {
-    0%, 100% { 
+    0%, 100% {
         box-shadow: 0 0 5px hsla(var(--glow-primary) / 0.3);
     }
-    50% { 
+    50% {
         box-shadow: 0 0 20px hsla(var(--glow-primary) / 0.6), 0 0 30px hsla(var(--glow-primary) / 0.4);
     }
 }
@@ -841,36 +1108,36 @@ body {
 }
 
 /* Enhanced UI Improvements */
-body.lg-wing-mode .main-display {
+/* Removed specific LG Wing mode styles here as they are no longer in HTML */
+/* body.lg-wing-mode .main-display {
     transition: all 0.5s ease;
 }
 
 body.lg-wing-mode .secondary-display {
     animation: slideInFromBottom 0.5s ease;
-}
+} */
 
 /* Enhanced category cards */
 .category-card {
-    background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.6));
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    border-radius: 24px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border: 1px solid var(--glass-border);
+    border-radius: 28px;
     padding: 32px 20px;
     text-align: center;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
     overflow: hidden;
-    box-shadow: 
-        0 10px 25px -5px rgba(0, 0, 0, 0.2),
-        0 8px 10px -6px rgba(0, 0, 0, 0.1),
-        inset 0 1px 0 rgba(248, 250, 252, 0.1);
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .category-card:hover {
     transform: translateY(-12px) scale(1.03);
-    box-shadow: 
+    box-shadow:
         0 35px 60px -12px rgba(0, 0, 0, 0.3),
         0 0 0 1px rgba(99, 102, 241, 0.2),
         0 0 30px rgba(99, 102, 241, 0.15),
@@ -1137,7 +1404,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
+    background:
         radial-gradient(circle at 20% 20%, hsla(var(--glow-primary) / 0.1) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, hsla(var(--glow-secondary) / 0.1) 0%, transparent 50%),
         radial-gradient(circle at 40% 60%, hsla(var(--accent-color) / 0.05) 0%, transparent 50%);
@@ -1148,58 +1415,93 @@ body::before {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .header-content {
-        flex-direction: column;
-        gap: 12px;
-        padding: 8px 0;
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        padding: 0; /* Ensures no extra padding outside header-content */
+        margin: 0;
+        background: var(--glass-bg);
+        backdrop-filter: blur(40px);
+        -webkit-backdrop-filter: blur(40px);
+        border-bottom: 1px solid var(--glass-border);
     }
 
-    .logo-search-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
+    .header-content {
+        flex-direction: column;
+        gap: 6px;
+        padding: 6px 0; /* Reduced vertical padding for compact look */
+        margin: 0;
     }
 
     .logo {
         font-size: 18px;
+        text-align: center;
+        margin-bottom: 4px;
     }
 
     .logo i {
         font-size: 20px;
     }
 
-    .search-input-compact {
-        width: 120px;
-        padding: 6px 30px 6px 12px;
-        font-size: 13px;
+    .search-container {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0 20px;
     }
 
-    .search-input-compact:focus {
-        width: 150px;
+    .search-input {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        font-size: 14px;
+        padding: 8px 14px 8px 40px;
     }
 
     .nav {
         display: flex;
         justify-content: center;
-        gap: 20px;
+        gap: 12px;
         width: 100%;
-        padding: 8px 0;
+        padding: 4px 20px 8px;
+        flex-wrap: wrap;
     }
 
     .nav-link {
-        font-size: 13px;
-        padding: 4px 0;
+        font-size: 12px;
+        padding: 6px 10px;
+        border-radius: 16px;
+        background: var(--glass-bg-light);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid var(--glass-border);
+        text-decoration: none;
+        transition: all 0.2s ease;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+        background: var(--gradient-primary);
+        color: white;
+        border-color: hsl(var(--primary-color));
     }
 
 
+    .hero {
+        padding: 40px 0 30px;
+    }
 
     .hero-content h1 {
-        font-size: 32px;
+        font-size: 28px;
+        margin-bottom: 16px;
     }
 
     .hero-content p {
-        font-size: 18px;
+        font-size: 16px;
+        margin-bottom: 8px;
     }
 
     .section-title {
@@ -1207,16 +1509,21 @@ body::before {
     }
 
     .categories-grid {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 16px;
     }
 
     .category-card {
-        padding: 20px 16px;
+        padding: 24px 16px;
     }
 
     .category-card i {
-        font-size: 24px;
+        font-size: 28px;
+        margin-bottom: 12px;
+    }
+
+    .category-card span {
+        font-size: 14px;
     }
 
     .apps-grid {
@@ -1250,8 +1557,23 @@ body::before {
         padding: 0 16px;
     }
 
+    .header {
+        top: 0;
+        position: fixed;
+        /* Padding handled by .header-content */
+        padding: 0; /* Ensure no extra padding */
+        margin: 0;
+    }
+
     .header-content {
         padding: 6px 0;
+        /* margin: 0; - Redundant */
+    }
+
+    .main {
+        /* This padding should cover the entire height of the header for the smallest screens */
+        padding-top: 100px; /* Adjust for compact tribute section */
+        min-height: calc(100vh - 100px);
     }
 
     .logo {
@@ -1282,9 +1604,8 @@ body::before {
     }
 
 
-
     .hero {
-        padding: 60px 0;
+        padding: 30px 0 20px;
     }
 
     .app-header {
@@ -1312,186 +1633,6 @@ body::before {
     }
 }
 
-/* LG Wing Dual Screen Support */
-.lg-wing-container {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-}
-
-.main-display {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.content-wrapper {
-    width: 100%;
-    height: 100%;
-}
-
-.secondary-display {
-    display: none;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 300px;
-    background: linear-gradient(145deg, #0F172A, #1E293B);
-    border-top: 2px solid rgba(99, 102, 241, 0.3);
-    z-index: 2000;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-}
-
-.touchpad-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    padding: 20px;
-    gap: 16px;
-}
-
-.touchpad {
-    flex: 1;
-    background: linear-gradient(145deg, #1E293B, #334155);
-    border: 2px solid rgba(148, 163, 184, 0.2);
-    border-radius: 20px;
-    position: relative;
-    overflow: hidden;
-    cursor: crosshair;
-    user-select: none;
-    box-shadow: 
-        inset 0 4px 8px rgba(0, 0, 0, 0.3),
-        0 4px 16px rgba(99, 102, 241, 0.1);
-}
-
-.touchpad-cursor {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    background: #6366F1;
-    border-radius: 50%;
-    box-shadow: 0 0 12px #6366F1;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    transition: all 0.1s ease;
-    z-index: 10;
-}
-
-.touchpad-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: rgba(148, 163, 184, 0.7);
-    pointer-events: none;
-}
-
-.touchpad-instructions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-}
-
-.touchpad-instructions i {
-    font-size: 24px;
-    color: #6366F1;
-}
-
-.touchpad-instructions span {
-    font-weight: 600;
-    font-size: 14px;
-}
-
-.touchpad-instructions small {
-    font-size: 12px;
-    opacity: 0.8;
-}
-
-.touchpad-buttons {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-}
-
-.touchpad-btn {
-    background: linear-gradient(145deg, #334155, #475569);
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    border-radius: 12px;
-    color: #F8FAFC;
-    padding: 12px 20px;
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    min-width: 80px;
-    justify-content: center;
-}
-
-.touchpad-btn:hover {
-    background: linear-gradient(145deg, #475569, #64748B);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
-}
-
-.touchpad-btn:active {
-    transform: translateY(0);
-    background: linear-gradient(145deg, #6366F1, #8B5CF6);
-}
-
-.touchpad-btn.active {
-    background: linear-gradient(145deg, #6366F1, #8B5CF6);
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
-}
-
-/* LG Wing Detection Media Query */
-@media screen and (orientation: landscape) and (max-height: 1080px) and (min-width: 2340px) {
-    .lg-wing-container {
-        display: flex;
-        flex-direction: row;
-    }
-
-    .main-display {
-        width: 70%;
-        height: 100vh;
-    }
-
-    .secondary-display {
-        display: block;
-        position: relative;
-        width: 30%;
-        height: 100vh;
-        border-top: none;
-        border-left: 2px solid rgba(99, 102, 241, 0.3);
-    }
-
-    .touchpad-container {
-        height: 100%;
-        padding: 40px 20px;
-    }
-}
-
-/* Enhanced animations for LG Wing */
-@media screen and (orientation: landscape) and (max-height: 1080px) and (min-width: 2340px) {
-    .app-card {
-        transition: all 0.3s ease;
-    }
-
-    .hot-apps-scroll {
-        scroll-behavior: smooth;
-    }
-
-    .touchpad-cursor {
-        animation: pulse 2s infinite;
-    }
-}
-
 /* Animation for loading spinner */
 @keyframes spin {
     0% { transform: rotate(0deg); }
@@ -1514,12 +1655,16 @@ body::before {
     display: inline-flex;
     align-items: center;
     padding: 4px 8px;
-    border-radius: 12px;
+    border-radius: 16px;
     font-size: 12px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
-    border: 1px solid transparent;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg-light);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .app-badge:hover {
@@ -1562,15 +1707,17 @@ body::before {
 
 .badge-modal-content {
     background: var(--glass-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
     border: 1px solid var(--glass-border);
-    border-radius: 20px;
+    border-radius: 24px;
     padding: 32px;
     max-width: 500px;
     width: 90%;
     position: relative;
-    box-shadow: var(--glass-shadow);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
     animation: modalSlideIn 0.3s ease-out;
 }
 
