@@ -168,6 +168,13 @@ class AcueStore {
 
         if (noResults) noResults.style.display = 'none';
 
+        // Clear existing content first
+        appsGrid.innerHTML = '';
+        
+        // Force display grid to ensure proper layout
+        appsGrid.style.display = 'grid';
+        
+        // Render all apps
         appsGrid.innerHTML = appsToRender.map(app => this.createAppCard(app)).join('');
 
         // Add click event listeners to download buttons
@@ -537,7 +544,7 @@ class AcueStore {
                             </div>
                             <div class="info-item">
                                 <span class="info-label">Security Patch:</span>
-                                <span class="info-value">July 8 2025</span>
+                                <span class="info-value">July 8, 2025</span>
                             </div>
                             <div class="info-item">
                                 <span class="info-label">ASPFU Version:</span>
@@ -706,26 +713,10 @@ class AcueStore {
     }
 
     initLGWingSupport() {
-        this.lgWingDetected = this.detectLGWing();
-        
-        if (this.lgWingDetected) {
-            this.setupVirtualTouchpad();
-            document.body.classList.add('lg-wing-mode');
-        }
-        
-        // Listen for orientation changes
-        window.addEventListener('orientationchange', () => {
-            setTimeout(() => {
-                this.lgWingDetected = this.detectLGWing();
-                if (this.lgWingDetected) {
-                    this.setupVirtualTouchpad();
-                    document.body.classList.add('lg-wing-mode');
-                } else {
-                    document.body.classList.remove('lg-wing-mode');
-                    this.disableVirtualTouchpad();
-                }
-            }, 100);
-        });
+        // Disable LG Wing support completely
+        this.lgWingDetected = false;
+        document.body.classList.remove('lg-wing-mode');
+        this.disableVirtualTouchpad();
     }
 
     detectLGWing() {
@@ -985,45 +976,8 @@ class AcueStore {
     }
 
     renderAppsOptimized(appsToRender = this.apps) {
-        if (this.isOlderDevice && this.useIdleCallback) {
-            // Render apps in chunks for better performance
-            const chunkSize = 6;
-            const chunks = [];
-            
-            for (let i = 0; i < appsToRender.length; i += chunkSize) {
-                chunks.push(appsToRender.slice(i, i + chunkSize));
-            }
-            
-            const appsGrid = document.getElementById('appsGrid');
-            if (!appsGrid) return;
-            
-            appsGrid.innerHTML = '';
-            
-            chunks.forEach((chunk, index) => {
-                requestIdleCallback(() => {
-                    const chunkHtml = chunk.map(app => this.createAppCard(app)).join('');
-                    appsGrid.insertAdjacentHTML('beforeend', chunkHtml);
-                    
-                    // Add event listeners for this chunk
-                    const newCards = appsGrid.querySelectorAll('.app-card:not([data-listeners])');
-                    newCards.forEach((card, cardIndex) => {
-                        card.setAttribute('data-listeners', 'true');
-                        const downloadBtn = card.querySelector('.download-btn');
-                        if (downloadBtn) {
-                            downloadBtn.addEventListener('click', (e) => {
-                                e.preventDefault();
-                                const appIndex = index * chunkSize + cardIndex;
-                                if (chunk[cardIndex]) {
-                                    this.handleDownload(chunk[cardIndex]);
-                                }
-                            });
-                        }
-                    });
-                });
-            });
-        } else {
-            this.renderApps(appsToRender);
-        }
+        // Always use regular rendering to ensure all apps show
+        this.renderApps(appsToRender);
     }
 }
 
