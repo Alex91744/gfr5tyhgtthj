@@ -269,13 +269,13 @@ const appsData = [
     },
     {
         id: 'skype',
-        name: 'Skype',
+        name: 'Unknown',
         developer: 'Microsoft Corporation',
         category: 'social',
         rating: 4.0,
         description: 'Video calling and messaging for staying connected worldwide.',
         icon: 'fab fa-skype',
-        downloadUrl: 'https://apkpure.com/skype/com.skype.raider/downloading',
+        downloadUrl: 'https://apkpure.com/skype/_om.skype.raider/downloading',
         badges: ["unstable"]
     },
     {
